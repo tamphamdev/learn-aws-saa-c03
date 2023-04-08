@@ -68,3 +68,10 @@
         - Applications performing real-time processing of big unstructured data
 
     **Tối ưu bộ nhớ - Storage Optimized**
+
+    - Dùng để lưu lượng với data với tần suất xử dụng thường xuyên
+    - Dùng để:
+        - Relational & NoSQL DB
+        - Cache in memory database (Redis)
+        - Data warehousing
+        - Distributed file systems

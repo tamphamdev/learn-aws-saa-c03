@@ -11,15 +11,15 @@
     - Trong AWS áp dụng **nguyên tắc ít đặc quyền ⇒** không cho user nhiều quyền hơn user cần
 3. **Policies Structure**
     - Nhất quán theo cú pháp
-        - Version: luôn luôn bao gồm “2012-10-17”
+        - **Version**: luôn luôn bao gồm “2012-10-17”
         - Id: định danh của policy (optional)
-        - Statement: 1 hoặc nhiều câu lệnh (bắt buộc)
+        - **Statement**: 1 hoặc nhiều câu lệnh (bắt buộc)
     - Cú pháp của statement:
         - Sid: định danh của statement (optional)
-        - Effect: liệu statement được cho phép hoặc từ chối try cập (Allow, Deny)
-        - Principal: account/user/role ⇒ nơi policy được phép áp dụng
-        - Action: danh sách các hành động của policy cho phép hoặc từ chối
-        - Resource: danh sách các resource của các action được áp dụng
+        - **Effect**: liệu statement được cho phép hoặc từ chối try cập (Allow, Deny)
+        - **Principal**: account/user/role ⇒ nơi policy được phép áp dụng
+        - **Action**: danh sách các hành động của policy cho phép hoặc từ chối
+        - **Resource**: danh sách các resource của các action được áp dụng
         - Condition: điều kiện khi mà policy áp dụng (optional)
 
             ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/609505ff-041e-4842-80ed-0811b7d7b51a/Untitled.png)
@@ -56,3 +56,24 @@
     - IAM Access Advisor (user-level)
         - Access advisor hiển thị các quyền dịch vụ được cấp cho user và lần cuối các dịch vụ đó đc truy cập
         - Có thể dùng thông tin này để ra soát lại policies.
+
+ **Best practices**
+  - Không sử dụng root account ngoại trừ lúc setup AWS account.
+  - Một user vật lí = 1 AWS user
+  - Gán user vào 1 group và gán quyền vào group đó
+  - Tạo ra các mật khẩu mạnh policy
+  - Sử dụng và bắt buộc sử dụng **MFA**
+  - Tạo và sử dụng **Roles** cho các quyền truy cập của AWS services
+  - Sử dụng Access keys khi lập trình (CLI/SDK)
+  - Kiểm tra quyền của account bằng cách sử dụng IAM Credential Report & IAM Access Advisor
+  - **Không bao giờ chia share IAM user & Access key**
+
+**Summary**
+
+- **Users**: gắn bởi 1 user vật lí, có password cho AWS console
+- **Groups**: chỉ chứa các users
+- **Policies**: JSON document chỉ ra các quyền của users hoặc group
+- **Roles**: for EC2 instances hoặc AWS services
+- **Security**: MFA + Password policy
+- **Access** keys: truy cập AWS sử dụng CLI hoặc SDK
+- **Audit**: IAM Credentials Report & IAM Access Advisor

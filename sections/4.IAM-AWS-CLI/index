@@ -23,3 +23,19 @@
         - Action: danh sách các hành động của policy cho phép hoặc từ chối
         - Resource: danh sách các resource của các action được áp dụng
         - Condition: điều kiện khi mà policy áp dụng (optional)
+
+- **IAM - Password Policy**
+    - Password mạnh ⇒ bảo mật càng cao
+    - Trong AWS, có thể setup password policy bằng cách:
+        - Độ dài tối thiểu
+        - Kí tự đặc biệt
+            - bao gồm in hoa
+            - in thường
+            - số
+            - kí tự đặc biệt
+        - Cho phép tất cả IAM user đổi password của họ
+        - Yêu cầu user đổi password sau 1 thời gian
+        - Chặn tái sử dụng password cũ
+- **IAM - Access Key**
+    - Root user có thể tạo `access key` và `secret key` cho **IAM** user
+    - Được dùng để truy cập AWS thông qua **AWS CLI**

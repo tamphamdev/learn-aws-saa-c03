@@ -1,17 +1,15 @@
-# IAM & AWS CLI
-
 ## IAM
 
-- **Users & Groups**
+1. **Users & Groups**
     - IAM = Identity and Access Management, **Global** service
     - Root account mặc định được tạo, không thể sử dụng hoặc share
     - User chung organization có thể group lại
     - Group chỉ có thể chứa user, không thể chứa group khác
-- **Permissions**
+2. **Permissions**
     - Users hoặc Groups có thể gán bằng JSON gọi là policies
     - Policies trong JSON được định nghĩa quyền của users
     - Trong AWS áp dụng **nguyên tắc ít đặc quyền ⇒** không cho user nhiều quyền hơn user cần
-- Policies Structure
+3. **Policies Structure**
     - Nhất quán theo cú pháp
         - Version: luôn luôn bao gồm “2012-10-17”
         - Id: định danh của policy (optional)
@@ -24,7 +22,10 @@
         - Resource: danh sách các resource của các action được áp dụng
         - Condition: điều kiện khi mà policy áp dụng (optional)
 
-- **IAM - Password Policy**
+            ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/609505ff-041e-4842-80ed-0811b7d7b51a/Untitled.png)
+
+
+4. **IAM - Password Policy**
     - Password mạnh ⇒ bảo mật càng cao
     - Trong AWS, có thể setup password policy bằng cách:
         - Độ dài tối thiểu
@@ -36,6 +37,22 @@
         - Cho phép tất cả IAM user đổi password của họ
         - Yêu cầu user đổi password sau 1 thời gian
         - Chặn tái sử dụng password cũ
-- **IAM - Access Key**
+5. **IAM - Access Key**
     - Root user có thể tạo `access key` và `secret key` cho **IAM** user
     - Được dùng để truy cập AWS thông qua **AWS CLI**
+6. **AWS - Cloudshell**
+    - Command line interface cho AWS
+    - Chỉ hoạt động trên 1 số vùng (region) nhất định
+7. **IAM Roles for services**
+    - Một vài services của AWS sẽ thực hiện thay bạn
+    - Vì vậy phải cấp **quyền** cho AWS services với **IAM Roles**
+    - Một số roles thông dụng:
+        - EC2 Instance Roles
+        - Lambda Function Roles
+        - Roles for CloudFormation
+8. **IAM Sercurity Tools**
+    - IAM Credential Report (account-level)
+        - Report danh sách tất cả account user và trạng thái xác thực
+    - IAM Access Advisor (user-level)
+        - Access advisor hiển thị các quyền dịch vụ được cấp cho user và lần cuối các dịch vụ đó đc truy cập
+        - Có thể dùng thông tin này để ra soát lại policies.

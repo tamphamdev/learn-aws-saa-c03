@@ -1,0 +1,25 @@
+# IAM & AWS CLI
+
+## IAM
+
+- **Users & Groups**
+    - IAM = Identity and Access Management, **Global** service
+    - Root account mặc định được tạo, không thể sử dụng hoặc share
+    - User chung organization có thể group lại
+    - Group chỉ có thể chứa user, không thể chứa group khác
+- **Permissions**
+    - Users hoặc Groups có thể gán bằng JSON gọi là policies
+    - Policies trong JSON được định nghĩa quyền của users
+    - Trong AWS áp dụng **nguyên tắc ít đặc quyền ⇒** không cho user nhiều quyền hơn user cần
+- Policies Structure
+    - Nhất quán theo cú pháp
+        - Version: luôn luôn bao gồm “2012-10-17”
+        - Id: định danh của policy (optional)
+        - Statement: 1 hoặc nhiều câu lệnh (bắt buộc)
+    - Cú pháp của statement:
+        - Sid: định danh của statement (optional)
+        - Effect: liệu statement được cho phép hoặc từ chối try cập (Allow, Deny)
+        - Principal: account/user/role ⇒ nơi policy được phép áp dụng
+        - Action: danh sách các hành động của policy cho phép hoặc từ chối
+        - Resource: danh sách các resource của các action được áp dụng
+        - Condition: điều kiện khi mà policy áp dụng (optional)

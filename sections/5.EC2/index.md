@@ -75,3 +75,31 @@
         - Cache in memory database (Redis)
         - Data warehousing
         - Distributed file systems
+5. **Security Groups**
+    - Security Groups là nền tảng của an minh mạng trong AWS
+    - Có thể được sử dụng bởi nhiều instances
+    - Nên tạo 1 group riêng để có thể truy cập SSH
+    - Khoá bởi region/VPC (nếu đổi region phải tạo lại)
+    - Kiểm soát được traffic ra vào của EC2 instances.
+
+    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ead753bf-567f-42f5-84ee-0da27f30f533/Untitled.png)
+
+    - Security groups chỉ chứa **allow** rules
+    - Security groups rules có thể reference bởi IP hoặc bởi security group??
+    - Security groups đc coi như là “firewall” bên ngoài EC2 instances
+    - Port :
+        - 22 = SSH (Secure Shell) - log into a Linux instance
+        - 21 = FTP (File Transfer Protocol) - upload files into a file share
+        - 22 = SFTP (Secure File Transfer Protocol) - upload files using SSH
+        - 80 = HTTP - access unsecured websites
+        - 443 = HTTPS - access secured websites
+        - 3389 = RDP (Remote Desktop Protocol) - log into a Windows instance
+    - Chúng qui định:
+        - Truy cập port
+        - Authorised IP range - IPv4 & IPv6
+        - Kiểm soát mạng ra vào ( từ bên ngoài vào instance và từ instance ra ngoài)
+    - Nếu một group cho phép truy cập inbound của group khác thì instance của group đó mặc định được truy cập
+
+        ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3f2bb5e9-e078-4f61-999e-c2814feec589/Untitled.png)
+
+    - Note: nếu SSH hoặc truy cập qua HTTP mà timeout ⇒ 100% lỗi security group

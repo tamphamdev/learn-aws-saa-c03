@@ -103,3 +103,9 @@
         ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3f2bb5e9-e078-4f61-999e-c2814feec589/Untitled.png)
 
     - Note: nếu SSH hoặc truy cập qua HTTP mà timeout ⇒ 100% lỗi security group
+  6. **SSH**
+      - Generate file PEM
+      - `ssh -i fileName.pem ec2-user@public-ip-address`
+          - Trong đó ec2-user vì EC2 AIM có user setup sẵn và user đó tên là **ec2-user**
+      - Nếu bị lỗi `permission 0644`
+          - Run command ⇒ `chmod fileName.ped`

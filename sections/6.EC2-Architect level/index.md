@@ -33,10 +33,41 @@
         - Thay vào đó sử dụng random public IP và đăng kí DNS cho nó
         - Cuối cùng có thể sử dụng Load Balancer và không sử dụng public IP
         
-**Note**: EIP sẽ charge tiền nếu không thoả mãn điều kiện sau:
-    - Elastic IP không liên kết với 1 EC2 instance bất kì nào
-    - EC2 instance được kết nối với Elastic IP address đang chạy
-    - The instance has only one Elastic IP address attached to it.
-    - Instance chỉ có 1 Elastic IP kết nối vào
-    - Elastic IP liên kết với network interface
-    - Nếu tạo ra để đó sẽ bị charge
+
+  **Note**: EIP sẽ charge tiền nếu không thoả mãn điều kiện sau:
+      - Elastic IP không liên kết với 1 EC2 instance bất kì nào
+      - EC2 instance được kết nối với Elastic IP address đang chạy
+      - The instance has only one Elastic IP address attached to it.
+      - Instance chỉ có 1 Elastic IP kết nối vào
+      - Elastic IP liên kết với network interface
+      - Nếu tạo ra để đó sẽ bị charge
+## Placement Groups
+
+- Muốn kiểm soát vị trị chiến lược EC2 Instance
+- Có thể sử dụng placement group định nghĩa việc đó
+- Khi tạo placement group, nên chỉ định cụ thể như sau:
+    - *Cluster* - cluster instance vào trong 1 low-latency group trong 1 AZ đơn lẻ (nhóm lại)
+    - *Spread* - spreads instance  across underlying hardware ( tối đa 7 instances mỗi group mỗi AZ) - critical applications (dàn trải)
+    - *Partition* - spreads instances across many different partitions ( which rely on different sets of racks) with in an AZ. Scales to 100s of EC2 instances per group (Hadoop, Cassandra, Kafka)
+    1. ***Cluster***
+
+        ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/60a9bbe3-50f9-4eed-806f-26c3bab0efde/Untitled.png)
+
+        - Tất cả EC2 đặt chung vào 1 hardware, chung AZ
+        - Pros: Băng thông tốt (10Gbps bandwidth giữa các instances), độ trễ thấp
+        - Cons: nếu hardware hư hỏng ⇒ tất cả EC2 đều hỏng cùng lúc
+        - Use case: công việc Big data cần hoàn thành nhanh, application cần network nhanh và độ trễ cực thấp ⇒ ***high risk***
+    2. **Spread**
+
+        ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/4a4cc4c7-847d-4130-98d0-2736bf174636/Untitled.png)
+
+        - Đặt ở các hardware khác nhau ⇒ ***minimize failure risk***
+        - Pros:
+            - có thể đặt ở nhiều nơi trong AZ
+            - Giảm thiểu rủi ro
+            - EC2 instances đặt khác nhau trên các máy chủ vật lí
+        - Cons:
+            - Tối đa 7 instance cho mỗi AZ mỗi placement group
+        - Use case:
+            - Application cần sự tồn tại tối đa (lúc nào cũng online)
+            - Những app fail nên được cô lập khỏi các app khác (ko chết đồng loạt)

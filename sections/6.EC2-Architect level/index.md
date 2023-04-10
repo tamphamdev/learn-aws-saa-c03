@@ -32,3 +32,11 @@
         - Poor architectural
         - Thay vào đó sử dụng random public IP và đăng kí DNS cho nó
         - Cuối cùng có thể sử dụng Load Balancer và không sử dụng public IP
+        
+**Note**: EIP sẽ charge tiền nếu không thoả mãn điều kiện sau:
+    - Elastic IP không liên kết với 1 EC2 instance bất kì nào
+    - EC2 instance được kết nối với Elastic IP address đang chạy
+    - The instance has only one Elastic IP address attached to it.
+    - Instance chỉ có 1 Elastic IP kết nối vào
+    - Elastic IP liên kết với network interface
+    - Nếu tạo ra để đó sẽ bị charge

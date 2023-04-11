@@ -76,3 +76,14 @@
     - Một partition chết có thể ảnh hưởng nhiều EC2 nhưng không ảnh hưởng partition khác
     - EC2 instance có thể truy cập tới thông tin partition thông qa metadata
     - Use cases: Big data applications, HDFS, Hbase, Cassandra, Aplache Kafka
+
+**Elastic Network Interfaces (ENI)**
+- Logical components trong VPC (Virtual Private Cloud) đại diện cho **virtual network card**
+- ENI có các thuộc tính như sau:
+    - Primary private IPv4, 1 hoặc nhiều IPv4 phụ (secondary)
+    - 1 Elastic IP (IPv4) mỗi private IPv4
+    - 1 Elastic IP (IPv4) mỗi public IPv4
+    - Một hoặc nhiều security groups
+    - MAC Address
+- Có thể tạo 1 ENI độc lập và attach chúng vào EC2 instances cho chuyển đổi dự phòng
+- Bound to 1 AZ cụ thể

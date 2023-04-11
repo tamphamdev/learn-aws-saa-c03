@@ -87,3 +87,20 @@
     - MAC Address
 - Có thể tạo 1 ENI độc lập và attach chúng vào EC2 instances cho chuyển đổi dự phòng
 - Bound to 1 AZ cụ thể
+## **EC2 Hibernate**
+
+- **Stop** - data trên ổ đĩa (EBS) sẽ giữ nguyên vẹn cho lần start tiếp thep
+- **Terminate** - bất cứ EBS ổ đĩa sẽ bị mất data
+- **Start**:
+    - Chạy lần đầu: OS khởi động & EC2 User data script chạy
+    - Bước tiếp theo: OS khởi động lên
+    - Sau đó app start, cache khởi động, và có thể mất thời gian
+- **Hibernate**:
+    - Trạng thái của RAM được bảo toàn
+    - Instance khởi động lẹ hơn (OS ko dừng/khởi động lại)
+    - EBS volume gốc nên đc encrypted
+    - ⇒ Khi hibernated RAM sẽ được lưu trữ tạm vào trong EBS volume gốc, khi Run sẽ lấy RAM từ trong EBS volume ra
+    - Use cases:
+        - Các tiến trình chạy dài
+        - Lưu trữ trạng thái của RAM
+        - Các service cần thời gian để khởi tạo

@@ -104,3 +104,10 @@
         - Các tiến trình chạy dài
         - Lưu trữ trạng thái của RAM
         - Các service cần thời gian để khởi tạo
+    - **Support Instance families** - C3, C4, C5, I3, M3, M4, R3, R4, T2, T3…
+    - **Instance RAM Size** - nên nhỏ hơn 150GB
+    - Instance size - not supported for bare metal instances
+    - **AMI** - Amazon Linux 2, Linux AMO, Ubuntu, CenOS, Window…
+    - **Root volume** - nên là EBS, encrypted, không phải instance lưu trữ và lớn
+    - Có sẵn cho **On-demand**, **Reserved** và **Spot** instance
+    - Một instance **không thể hibernate** quá 60 ngày

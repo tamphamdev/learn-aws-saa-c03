@@ -2,6 +2,26 @@
 
 ## EBS Volume
 
-- **EBS (Elastic Block Store)** **Volume** là 1 **mạng lưới**  (network) **** ổ cứng có thể được attach tới instance khi nó chạy
+- **EBS (Elastic Block Store)** **Volume** là 1 **network drive** (không phải physical drive) có thể được attach tới instance khi nó chạy
+- Bị ràng buộc ở **1 AZ cụ thể**
 - Cho phép instance giữ data kể cả khi nó bị terminate
-    - **Nó chỉ được mounted tới 1 EC2 instance trong 1 lúc** (ở CCP level - Certificate Cloud Pratice) level  SA, Developer, SysOps: “multi-attach” feature for some EBS
+- **Nó chỉ được mounted tới 1 EC2 instance trong 1 lúc** (ở CCP level - Certificate Cloud Practice) level  SA, Developer, SysOps: “multi-attach” feature for some EBS
+- Giống nhau: nó giống như “network USB”
+- Free tier: 30GB free EBS storage loại Gerneral Purpose (SSD) hoặc Magnetic mỗi tháng
+- Là network drive (không phải physical drive)
+    - Dùng network để giao tiếp giữa các instances, có nghĩa là sẽ có 1 chút độ trễ
+    - Có thể attach và detach từ 1 EC2 instance 1 cách dễ dàng và nhanh chóng
+- Bị khoá bởi AZ
+    - EBS Volume ở us-east-1a không thể attach tới us-east-1b
+    - Để di chuyển volume xung quanh, bạn cần snapshot nó trước
+- Phải cung cấp dung lượng của EBS (size - GBs và IOPS - **I/O operations per second**)
+- Bạn sẽ đc tính tiền bởi tất cả dung lượng bạn cũng cấp
+- Có thể tăng dung lượng liên tục
+- EBS - Delete on Termination
+    - Kiểm soát EBS khi EC2 instance bị terminate
+        - Mặc định, root EBS sẽ bị delete (enabled)
+        - Mặc định, bất cứ EBS volume khác không bị delete (disabled)
+    - Có thể thay đổi bởi AWS console / AWS CLI
+    - **Use case: bảo toàn root volume khi instance bị terminated**
+
+    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/751ecdab-8e4e-423b-b9c5-0d7781892c2c/Untitled.png)

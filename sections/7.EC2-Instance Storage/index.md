@@ -25,3 +25,20 @@
     - **Use case: bảo toàn root volume khi instance bị terminated**
 
     ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/751ecdab-8e4e-423b-b9c5-0d7781892c2c/Untitled.png)
+  ## EBS Snapshot
+
+- Backup EBS volume tại 1 thời điểm
+- Không cần thiết detach volume để snapshot, nhưng khuyến khích
+- Có thể copy snapshot xung quanh AZ hoặc region
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ada3fe88-c76f-4a31-8aa7-93f57794f73f/Untitled.png)
+
+- Features:
+    - EBS Snapshot Archive
+        - Di chuyển 1 snapshot tới “archive tier” đó rẻ hơn 75%
+        - Cần khoảng 24 - 72 giờ để restore archive đó
+    - Recycle Bin
+        - Cài đặt rule để giữ lạp snapshot đã delete, sau đó có thể recover lại sau khi lỡ xoá nhầm
+        - Rules giữa lại (1 ngày - 1 năm)
+    - Fast Snapshot Restore (FSR)
+        - Bắt buộc khởi tạo đầy đủ snapshot ko có độ trễ cho lần đầu sử dụng ($$$)

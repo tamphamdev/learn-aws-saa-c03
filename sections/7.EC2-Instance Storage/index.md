@@ -25,7 +25,7 @@
     - **Use case: bảo toàn root volume khi instance bị terminated**
 
     ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/751ecdab-8e4e-423b-b9c5-0d7781892c2c/Untitled.png)
-  ## EBS Snapshot
+## EBS Snapshot
 
 - Backup EBS volume tại 1 thời điểm
 - Không cần thiết detach volume để snapshot, nhưng khuyến khích
@@ -42,3 +42,13 @@
         - Rules giữa lại (1 ngày - 1 năm)
     - Fast Snapshot Restore (FSR)
         - Bắt buộc khởi tạo đầy đủ snapshot ko có độ trễ cho lần đầu sử dụng ($$$)
+## AMI - Amazone Machine Image
+
+- AMI là sự **tuỳ biến** của EC2 instance
+    - Có thể tự thêm software, configuration, OS, monitoring…
+    - Khởi động nhanh hơn/thời gian config bởi vì tất cả đều được chuẩn bị trước
+- AMI có thể được build cho **1 số vùng nhất định** ( và copy sang vùng khác)
+- Có thể lauch EC2 từ:
+    - **Public AMI**: AWS cung cấp
+    - **AMI của bản thân**: tự tạo và bảo trì nó
+    - **Hoặc trên AWS Marketplace AMI**: ai đó tạo và bán

@@ -52,3 +52,9 @@
     - **Public AMI**: AWS cung cấp
     - **AMI của bản thân**: tự tạo và bảo trì nó
     - **Hoặc trên AWS Marketplace AMI**: ai đó tạo và bán
+### AMI Process (From an EC2 instance)
+
+- Start EC2 instance và customize i
+- Stop the instance (để bảo toàn data)
+- Build AMI - nó cũng sẽ tạo EBS snapshot
+- Launch instance từ AMI

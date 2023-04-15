@@ -204,3 +204,8 @@
     - EFS has a higher price point than EBS
     - Can leverage EFS-IA for cost savings
     - Remember: EFS vs EBS vs Instance store (physically attach to EC2 instance, lose instance lose store)
+    
+**Quiz**:
+- EC2 Instance store highest performance, >250k IOPS, lose data when EC2 stop, cache
+- When launch EC2 instance with 2 EBS volumes, Root volume delete when EC2 terminated by default, other EBS will not
+- EFS ⇒ can access same data at the same time ⇒ point into file systems

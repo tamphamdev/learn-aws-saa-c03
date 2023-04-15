@@ -138,3 +138,69 @@
     - Mã hoá EBS snapshot (sử dụng copy)
     - Tạo mới EBS ổ điã từ snapshot (ổ đĩa sẽ bị mã hoá)
     - Bây giờ bạn có thể attach ổ đĩa mã hoá vào instance
+## EFS - Elastic File System
+
+- Quản lí NFS (network file system) có thể gắn vào nhiều EC2
+- EFS hoạt động với nhiều EC2 instance trong nhiều AZ
+- Khả năng sử dụng cao, scalable, đắt đỏ (3 lần gp2), trả mỗi lần sử dụng
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3abe2bd4-279c-4fe0-bfec-c5a2c6fe7adf/Untitled.png)
+
+- Use case: content management, web serving, data sharing, Wordpress
+    - Sử dụng NFSv4.1 protocol
+    - Sử dụng **security group** để kiểm soát truy cập EFS
+    - **Tương thích với Linux based AMI (not Windows)**
+    - Mã hoá khi nghỉ sử dụng KMS
+    - POSIX file system (~Linux) có chuẩn file API
+    - File system scale tự động, trả mỗi khi sử dụng, không cần định mức sử dụng
+
+## EFS - Performance & Storage classes
+
+- **EFS Scale**
+    - 1000 NFS client đồng thời, 10GB+/s lưu lượng
+    - Scale lên tới Petabype network file system, tự động
+- **Performance Mode (set lúc EFS creation time)**
+    - Mục đích sử dụng chung (default) - latency - các trường hợp nhạy cảm (webserver, CMS…)
+    - Max I/O - higher latency, throughput, highly parallel (big data, media processing)
+- **Throughput Mode**
+    - **Bursting** - 1TB = 50MiB/s + burst of up to 100MiB/s
+    - **Provisioned** - set your throughput regardless of storage size, ex 1GiB/s for 1 TB storage
+    - **Elastic** - automatically scales throughput up or down based on your workloads
+        - Up yo 3GiB/ for reads and 1GiB/s for writes
+        - Used for unpredictable workloads
+- **Storage Classes**
+    - **Storage tiers (lifecyle management feature - move file after N days)**
+        - Standard: for frequently accessed files
+        - Infrequent access (EFS-IA): cost to retrieve files, lower price to store. Enable EFS-IA with a Lifecycle Policy
+
+        ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/30ea6f3d-e897-4131-afad-8e8c17fd8637/Untitled.png)
+
+    - **Availability and durability**:
+        - Standard: Multi-AZ, great for prod
+        - One Zone: One AZ, greate for dv, backup enabled by default, compatible with IA (EFS One Zone-IA)
+    - Over 90% in cost savings
+
+    **Summary**: [hand on Udemy](https://www.udemy.com/course/aws-certified-solutions-architect-associate-saa-c03/learn/lecture/13528130#announcements)
+
+
+## EBS vs EFS - Elastic Block Storage
+
+- **EBS volumes…**
+    - one intance (except multi-attach io1/io2)
+    - are locked at the AZ level
+    - gp2: IO increase IP independently
+- **To migrate an EBS volume across AZ**
+    - Take a snapshot
+    - Restore the snapshot to another AZ
+    - EBS backups use UI and you shouldn’t run them while your application is handling a lot of traffice
+- **Root EBS Volumes of instances get terminated by default if the EC2 instance gets terminated (you can disable that)**
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/0f50c823-603a-4ee8-8863-e4df8c1c0fbf/Untitled.png)
+
+- **EFS - Elastic File System**
+    - Mounting 100s of instances arcoss AZ
+    - EFS share website files (WordPress)
+    - Only for Linux instances (POSIX)
+    - EFS has a higher price point than EBS
+    - Can leverage EFS-IA for cost savings
+    - Remember: EFS vs EBS vs Instance store (physically attach to EC2 instance, lose instance lose store)

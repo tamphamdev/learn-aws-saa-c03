@@ -58,3 +58,12 @@
 - Stop the instance (để bảo toàn data)
 - Build AMI - nó cũng sẽ tạo EBS snapshot
 - Launch instance từ AMI
+### EC2 Instance store
+
+- EBS volume là network drive (giống ổ đĩa USB) nhưng giới hạn performance
+- **Nếu bạn cần high-performance hardware disk, sử dụng EC2 Instance Store**
+- Better I/O performance
+- EC2 Instance Store sẽ mất nếu chúng bị stop (ephemeral - ngắn hạn, không lâu dài) **(không tốt cho lưu trữ dài hạn)**
+- Good ⇒ buffer / cache / scratch data/ temporary content
+- Nếu hardware sự cố ⇒ có nguy cơ bị mất data
+- Backup và copy là điều nên làm

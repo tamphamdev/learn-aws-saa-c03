@@ -111,3 +111,12 @@
             - Cho data được truy cập thường xuyên
             - Trong bối cảnh chi phí thấp là quan trọng
             - **Max lưu lượng** 250MiB/s - max IOPS 250
+### EBS Multi Attach - io1/io2 family
+
+- Attach cùng EBS volume tới nhiều EC2 instance trong cùng 1 AZ
+- Mỗi instance có full quyền đọc/viết tới high-perfomance volume cùng lúc
+- Use case:
+    - Có được 1 application với khả năng cao hơn trong cluster Linux applications(ex: Teradata)
+    - Application cần được quyền write đồng thời
+- **Tối đa 16 EC2 instance cùng lúc**
+- Phải sử dụng file systems là cluster-aware ( không phải XFS, EXT4…)

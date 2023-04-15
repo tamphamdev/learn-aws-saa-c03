@@ -67,3 +67,47 @@
 - Good ⇒ buffer / cache / scratch data/ temporary content
 - Nếu hardware sự cố ⇒ có nguy cơ bị mất data
 - Backup và copy là điều nên làm
+### EBS Volume Types
+
+- Bao gồm 6 loại:
+    - **gp2 / gp3 (SSD)**: Dùng cho mục đích sử dụng chung, cân bằng giữa giá tiền và hiệu năng ⇒ đa dạng công việc
+    - **io1 / io2 (SSD**): Performance cao nhất cho các nhiệm vụ quan trọng, độ trễ tháp và lưu lượng cao
+    - **st1 (HDD)**: HDD giá rẻ, được thiết kế cho sự truy cập thường xuyên và lưu lượng căng(?)
+    - **sc1 (HDD)**: HDD giá rẻ nhất, được thiết kế cho công việc ít truy cập thường xuyên
+- **Chỉ có gp2/gp3 và io1/io2 có thể được sử dụng như boot volume**
+- EBS volume được kí hiệu cho Size | Throughput | IOPS (I/O Ops Per Sec)
+- Type use cases:
+    - **General SSD:**
+        - Giá thành hiệu quả, độ trễ thấp
+        - System boot, Virtual desktop, Development, Testing enviroments
+        - 1Gb - 16Tb
+        - **gp2**:
+            - 1 Gps nhỏ có thể burst IOPS tới 3000
+            - Size của volume và IOPS liên kết với nhau, IOPS tối đa là 16,000
+            - 3 IOPS mỗi GB, có nghĩa là tại 5334GB chúng ta max IOPS (vì bị liên kết)
+        - **gp3**:
+            - Cơ bản 3000 IOPS và lưu lượng 125Mb
+            - Có thể tăng IOPS lên tới 16,000 and có lưu lượng có thể lên tới 1000MiB/s độc lập
+
+    - **Provisioned IOPS (PIOPS) SDD:**
+        - Các app có business khẩn cấp với độ duy trì IOPS cao
+        - Hoặc app cần > 16,000 IOPS
+        - Tốt cho các **công việc databases (perf lưu trữ data và liên tục)**
+        - **io2 Block Express** (4GiB- 64TiB):
+            - Sub milisenconds latency
+            - PIOPS: 256,000 với IOPS:GiB tỉ lệ 1000:1
+        - Hỗ trợ attach nhiều EBS
+        - io1/io2 (4 GiB - 16TiB):
+            - Max PIOPS: 64,000 cho Nitro EC2 instance & 32,000 cho các instance khác
+            - Có thể tăng PIOPS **độc lập** từ storage size
+            - io2 có độ ổn định và IOPS mỗi GiB hơn (**cùng giá với io1**)
+    - **Hard Disk Drive (HDD):**
+        - Không thể là boot volume
+        - 125GiB tới 16TiB
+        - Lưu lượng optimized (st1)
+            - Big data, Data warehouses, Log processing
+            - **Max lưu lượng** 500MiB/s - max IOPS 500
+        - Cold HDD (sc1):
+            - Cho data được truy cập thường xuyên
+            - Trong bối cảnh chi phí thấp là quan trọng
+            - **Max lưu lượng** 250MiB/s - max IOPS 250

@@ -120,3 +120,21 @@
     - Application cần được quyền write đồng thời
 - **Tối đa 16 EC2 instance cùng lúc**
 - Phải sử dụng file systems là cluster-aware ( không phải XFS, EXT4…)
+### EBS Encryption
+
+- Khi bạn tạo 1 EBS volume mã hoá, phải tuân theo:
+    - Data ở phần còn lại được mã hoá bên trong ổ đĩa
+    - Tất cả data di chuyển giữa các instance và ổ đĩa là đã đc mã hoá
+    - Tất cả snapshot đc mã hoá
+    - Tất cả ổ đĩa được tạo từ snapshot
+
+- Việc mã hoá và giải mã được xử lí minh bạch (ko cần phải làm gì cả)
+- Việc mã hoá có ít ảnh hưởng tới độ trễ
+- EBS Encryption leverages key form KMS (AES-256)
+- Snapshot của ổ đĩa bị mã hoá cũng mã hoá
+- Copy 1 snapshot không mã hoá cho phép mã hoá
+- Mã hoá: mã hoá 1 ổ đĩa EBS không được mã hoá
+    - Tạo 1 EBS snapshot của ổ đĩa
+    - Mã hoá EBS snapshot (sử dụng copy)
+    - Tạo mới EBS ổ điã từ snapshot (ổ đĩa sẽ bị mã hoá)
+    - Bây giờ bạn có thể attach ổ đĩa mã hoá vào instance

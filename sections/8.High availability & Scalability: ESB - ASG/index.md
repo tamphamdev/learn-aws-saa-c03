@@ -31,3 +31,15 @@
 - The goal of high availability is to survive a data center loss
 - The high availability can be passive (for RDS Multi AZ for example)
 - The high availability can be active (for horizontal scaling)
+
+### High Availability & Scalability for EC2
+
+- Vertical Scaling: increase instance size (= scale up/down)
+    - From: t2.nano - 0.5G of RAM, 1 vCPU
+    - To: u-12tb 1.metal - 12.3TB of RAM, 448 vCPU
+- Horizontal Scaling: Increase number of instances (= scale out/in)
+    - Auto scaling group
+    - Load balancer
+- High Availability: Run instances for the same application across multi AZ
+    - Auto Scaling Group multi AZ
+    - Load Balancer multi AZ

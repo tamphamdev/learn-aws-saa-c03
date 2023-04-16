@@ -88,3 +88,9 @@
     - Operates at layer 3 (Network layer) - IP Protocol
 - Overall, it is recommended to use the newer generation load balancers as they provide more features
 - Some load balancers can be setup as **internal** (private) or **external** (public) ELBs
+### Load Balancer Security Groups
+
+- Load balancer allow traffic from user
+    - HTTP port 80 0.0.0.0/
+    - HTTPS port 443 0.0.0.0/
+- EC2 instances only allows traffic from Load Balancer with HTTP and port 80. Source from Load balancer is Security Group

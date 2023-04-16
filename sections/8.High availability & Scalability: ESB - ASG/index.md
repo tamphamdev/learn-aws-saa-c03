@@ -69,3 +69,9 @@
         - EC2, EC2 Auto Scaling Groups, Amazon ECS
         - AWS Certificate Manager (ACM), CloudWatch
         - Route 53, AWS WAF, AWS Global Accelerator
+### Health Checks
+
+- Heath checks are crucial for Load Balancers
+- They enable the load balancer to know if instances it forwards traffic to are available to reply to requests
+- The heath check is done on a port and a route (/health is common)
+- If the response is not 200 (OK), then the instance is unhealthy

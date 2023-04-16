@@ -75,3 +75,16 @@
 - They enable the load balancer to know if instances it forwards traffic to are available to reply to requests
 - The heath check is done on a port and a route (/health is common)
 - If the response is not 200 (OK), then the instance is unhealthy
+### Type of load balancer on AWS
+
+- AWS has 4 kinds of managed Load Balancers
+- Classic Load Balancer (v1 - old generation) - 2009 - CLB
+    - HTTP, HTTPS, TCP, SSL (secure TCP)
+- Application Load Balancer (v2 - new generation) - 2016 - ALB
+    - HTTP, HTTPS, Websocket
+- Network Load Balancer (v2 - new generation) - 2018 - NLB
+    - TCP, TLS (secure TCP), UDP
+- Gateway Load Balancer - 2020 - GWLB
+    - Operates at layer 3 (Network layer) - IP Protocol
+- Overall, it is recommended to use the newer generation load balancers as they provide more features
+- Some load balancers can be setup as **internal** (private) or **external** (public) ELBs

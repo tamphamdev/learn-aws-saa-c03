@@ -8,7 +8,7 @@
     - Horizontal Scalability (= elasticity)
 - **Scalability is linked but different to High Availability**
 
-### Veritical Scalability
+### Vertical Scalability
 
 - Vertical scalability means **increasing the size of the instance**
 - For example, your application runs on a t2.micro
@@ -23,3 +23,11 @@
 - Horizontal scaling **implies distributed systems.**
 - This is very common for web applications/ modern applications
 - It’s easy to horizontally scale thanks the cloud offering such as Amazon EC2.
+
+### High Availability
+
+- High Availability usually goes hand in hand with horizontal scaling
+- High availability means running your application / system in at least 2 data centers (== AZ)
+- The goal of high availability is to survive a data center loss
+- The high availability can be passive (for RDS Multi AZ for example)
+- The high availability can be active (for horizontal scaling)

@@ -109,3 +109,12 @@
 - ALB are a greate fit for micro services & container-based application (example: Docker & Amazon ECS)
 - Has a port mapping feature to redirect to a dynamic port in ECS
 - In comparison, we’d need multiple Classic Load Balancer per application
+
+### Application Load Balancer (v2) Target Groups
+
+- EC2 instances (can be managed by an Auto Scaling Group) - HTTP
+- ECS task (managed by ECS itself) - HTTP
+- Lambda functions - HTTP request is translated into a JSON event
+- IP Address - must be private IPs
+- ALB can route to multiple target groups
+- Health checks are at the target group level

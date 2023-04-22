@@ -257,3 +257,15 @@ to be encrypted in transit (in-flight encryption)
 - Network Load Balancer (v2)
     - Supports multiple listeners with multiple SSL certificates
     - Uses Server Name Indication (SNI) to make it work
+### Connection Draining
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ee6d0a18-437b-4be5-bcca-17c4d7985e3d/Untitled.png)
+
+- Feature naming
+    - Connection Draining - for CLB
+    - Deregistration Delay - for ALB & NLB
+- Time to complete “in-flight-requests” while the instance is de-registering or un healthy
+- Stop sending new requests to the EC2 instance which is de-registering
+- Between 1 to 3600 seconds (default: 300 seconds)
+- Can be disabled (set value to 0)
+- Set to a low value if your request are short

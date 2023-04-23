@@ -78,6 +78,19 @@
     - A snapshot is taken
     - A new DB is restored from the snapshot in a new AZ
     - Synchronization is established between the two databases
+### RDS Custom
+
+- **Managed Oracle and Microsoft SQL Server Database with OS and database customization**
+- RDS: Automates setup, operation, and scaling of database in AWS
+- Custom: access to the underlying database and OS so you can
+    - Configure settings
+    - Install patches
+    - Enable native features
+    - Access the underlying EC2 Instance using **SSH** or **SSM Session Manager**
+- **De-activate Automation Mode** to perform your customization, better to take a DB snapshot before
+- RDS vs RDS Custom
+    - RDS: entire database and the OS to be managed by AWS
+    - RDS custom: full admin access to the underlying OS and the database
 ## Amazon Aurora
 
 ## Elastic Cache

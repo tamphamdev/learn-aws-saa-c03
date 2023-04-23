@@ -12,7 +12,7 @@
     - MariaDB
     - Oracle
     - Microsoft SQL Server
-    - Auroro(AWS Proprietary database)
+    - Aurora(AWS Proprietary database)
 
 ### Advantage over using RDS versus deploying DB on EC2
 
@@ -39,7 +39,13 @@
     - 6 hours have passed since last modification
 - Useful for applications with **unpredictable workloads**
 - Supports all RDS database engines (MariaDB, MySQLm PostgreSQL, SQL Server, Oracle)
+### RDS Read Replicas for read scalability
 
+- Up to 15 Read Replicas
+- **Within AZ, Cross AZ, Cross Region**
+- Replication is **ASYNC**, so reads are eventually consistent
+- Replicas can be promoted to their own DB (có thể trở thành DB chính)
+- Applications must update the connection string to leverage read replicas
 ## Amazon Aurora
 
 ## Elastic Cache

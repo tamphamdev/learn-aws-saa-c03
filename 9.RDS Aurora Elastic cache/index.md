@@ -54,6 +54,11 @@
 - You create a Read Replica to run the new workload there
 - The production application is unaffected
 - Read replicas are used for SELECT (=read) only kind of statements (not INSERT, UPDATE, DELETE)
+
+### RDS Read Replicas - Network Cost
+
+- In AWS there’s a network cost when data goes from one AZ to another
+- **For RDS Read Replicas within the same region, you don’t pay that fee**
 ## Amazon Aurora
 
 ## Elastic Cache

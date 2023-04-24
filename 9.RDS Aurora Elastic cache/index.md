@@ -146,4 +146,9 @@
 - Good for infrequent intermittent or unpredictable workloads
 - No capacity planning needed
 - Pay per second, can be more cost-effective
+
+### Aurora Multi-Master
+
+- In case you want immediate failover for write-node (HA)
+- Every node does R/W - vs promoting a RR (Replica Read) as a new master
 ## Elastic Cache

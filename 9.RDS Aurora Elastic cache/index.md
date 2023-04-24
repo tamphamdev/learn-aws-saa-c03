@@ -192,4 +192,13 @@
 - Manual DB Snapshots
     - Manually triggered by the suer
     - Retention of backup for as long as you want
+### RDS & Aurora Restore options
+
+- **Restoring a RDS / Aurora backup or a snapshot** create a new database
+- Restoring MySQL RDS database from S3
+    - Create a backup of your on-premises database
+    - Store it on Amazon S3 (object storage)
+    - Restore the backup file onto a new RDS instance running MySQL
+- Restoring MySQL Aurora cluster from S3
+    - Create a backup of your on-premises database using Percona XtraBackup
 ## Elastic Cache

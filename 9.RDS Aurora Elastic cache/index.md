@@ -164,4 +164,13 @@
     - Helps for decreasing latency
     - Promoting another region (for disaster recovery) has an RTO (Recovery Time Objective) of < 1 minute
     - **Typical cross-region replication takes less than 1 second**
+### Aurora Machine Learning
+
+- Enables you to add ML-based predictions to your applications via SQL
+- Simple, optimized, and secure integration between Aurora and AWS ML services
+- Supported services
+    - Amazon SageMaker (use with any ML model)
+    - Amazon Comprehend (for sentiment analysis)
+- You don’t need to  have ML experience
+- Use cases: fraud detection, ads targeting, sentiment analysis, product recommendations
 ## Elastic Cache

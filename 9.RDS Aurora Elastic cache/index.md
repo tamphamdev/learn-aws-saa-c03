@@ -184,4 +184,12 @@
     - Manually triggered by the user
     - Retention of backup for as long as you want
 - **Trick**: **in a stopped RDS database, you will pay for storage. If you plan on stopping it for a long time, you should snapshot & restore instead. (RDS database khi stop vẫn bị tính tiền)**
+### Aurora Backups
+
+- Automated backups
+    - 1 to 35 days (cannot be disabled)
+    - point-in-time recovery in that timeframe
+- Manual DB Snapshots
+    - Manually triggered by the suer
+    - Retention of backup for as long as you want
 ## Elastic Cache

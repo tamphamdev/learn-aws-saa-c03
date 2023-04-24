@@ -224,3 +224,13 @@
 - **No SSH available** except on RDS Custom
 - **Audit Logs can be enabled** and sent to CloudWatch Logs for longer retention
 ## Elastic Cache
+
+### Overview
+
+- The same way RDS is to get managed Relational Database…
+- ElastiCache is to get managed Redis or Memcached
+- Caches are in-memory database with really high performance, low latency
+- Helps reduce load off of database for read intensive workloads
+- Helps make your application stateless
+- AWS takes care of OS maintenance / patching, optimizations, setup, configuration, monitoring, failure recovery and backups
+- **Using ElasticAche involves heavy application code changes**

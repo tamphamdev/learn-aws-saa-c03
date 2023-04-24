@@ -201,4 +201,14 @@
     - Restore the backup file onto a new RDS instance running MySQL
 - Restoring MySQL Aurora cluster from S3
     - Create a backup of your on-premises database using Percona XtraBackup
+
+### Aurora Database Cloning
+
+- Create a new Aurora DB Cluster from an existing one
+- Faster than snapshot & restore
+- Uses ***copy-on-write*** protocol
+    - Initially, the new DB cluster uses the same data volume as the original DB cluster (fast and efficient - no copying is needed)
+    - When updates are made to the new DB cluster data, then additional storage is allocated and data is copied to be separated
+- Very fast & cost-effective
+- **Useful to create a “staging” database from a “production” database without impacting the production database**
 ## Elastic Cache

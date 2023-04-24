@@ -151,4 +151,17 @@
 
 - In case you want immediate failover for write-node (HA)
 - Every node does R/W - vs promoting a RR (Replica Read) as a new master
+
+### Global Aurora
+
+- **Aurora Cross Region Read Replicas:**
+    - Useful for disaster recovery
+    - Simple to put in place
+- **Aurora Global Database (recommended):**
+    - 1 Primary Region (read / write)
+    - Up to 5 secondary (read-only) regions, replication lag is less than 1 second
+    - Up to 16 Read Replicas per secondary region
+    - Helps for decreasing latency
+    - Promoting another region (for disaster recovery) has an RTO (Recovery Time Objective) of < 1 minute
+    - **Typical cross-region replication takes less than 1 second**
 ## Elastic Cache

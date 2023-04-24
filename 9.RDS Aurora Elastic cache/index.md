@@ -134,4 +134,9 @@
 - Advanced Monitoring
 - Routing Maintenance
 - Backtrack: restore data at any point of time without using backups
+### Aurora - Custom Endpoints
+
+- Define a subset of Aurora Instances as a Custom Endpoint
+- Example: run analytical queries on specific replicas
+- The Reader Endpoint is generally not used after defining Custom Endpoint
 ## Elastic Cache

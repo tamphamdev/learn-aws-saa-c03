@@ -234,3 +234,36 @@
 - Helps make your application stateless
 - AWS takes care of OS maintenance / patching, optimizations, setup, configuration, monitoring, failure recovery and backups
 - **Using ElasticAche involves heavy application code changes**
+
+### Solution Architecture - DB Cache
+
+- Applications queries ElastiCache, if not available, get from RDS and store in ElastiCache.
+- Helps relieve load in RDS
+- Cache must have an invalidation strategy to make sure only the most current data is used in there.
+
+### Solution Architecture - User Session Store
+
+- User logs into any of the application
+- The application writes the session data into ElastiCache
+- The user hits another instance of our application
+- The instance retrieves the data and the user is already logged in
+
+### ElatiCache - Redis vs Memcached
+
+**Redis**
+
+- **Multi AZ** with Auto-Failover
+- **Read Replicas** to scale read and have **high availability**
+- Data durability using AOF persistence
+- **Backup and restore features**
+- Supports Sets and Sorted Sets
+
+
+
+**MEMCACHED**
+
+- Multi-node for partitioning of data (sharding)
+- **No high availability (replication)**
+- **Non persistent**
+- **No backup and restore**
+- Multi-threaded architecture

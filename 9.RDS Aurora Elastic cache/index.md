@@ -173,4 +173,15 @@
     - Amazon Comprehend (for sentiment analysis)
 - You don’t need to  have ML experience
 - Use cases: fraud detection, ads targeting, sentiment analysis, product recommendations
+### RDS Backups
+
+- Automated backups:
+    - Daily full backup of the database (during the backup window)
+    - Transaction logs backed-up by RDS every 5 minutes
+    - ⇒ ability to restore to any point in time (from oldest backup to 5 minutes ago)
+    - 1 to 35 days of retention, set 0 to disable automated backups
+- Manual DB Snapshots
+    - Manually triggered by the user
+    - Retention of backup for as long as you want
+- **Trick**: **in a stopped RDS database, you will pay for storage. If you plan on stopping it for a long time, you should snapshot & restore instead. (RDS database khi stop vẫn bị tính tiền)**
 ## Elastic Cache

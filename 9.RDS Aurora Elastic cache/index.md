@@ -267,3 +267,14 @@
 - **Non persistent**
 - **No backup and restore**
 - Multi-threaded architecture
+
+### Cache Security
+
+- ElastiCache supports **IAM Authentication for Redis**
+- IAM policies on ElastiCache are only used for AWS API-level security
+- **Redis Auth**
+    - You can set a “password/token” when you create a Redis cluster
+    - This is an extra level of security for your cache (on top of security groups)
+    - Support SSL in flight encryption
+- Memcached
+    - Supports SASL-based authentication (advanced)

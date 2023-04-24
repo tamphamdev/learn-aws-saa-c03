@@ -139,4 +139,11 @@
 - Define a subset of Aurora Instances as a Custom Endpoint
 - Example: run analytical queries on specific replicas
 - The Reader Endpoint is generally not used after defining Custom Endpoint
+
+### Aurora Serverless
+
+- Automated database instantiation and auto scaling based on actual usage
+- Good for infrequent intermittent or unpredictable workloads
+- No capacity planning needed
+- Pay per second, can be more cost-effective
 ## Elastic Cache

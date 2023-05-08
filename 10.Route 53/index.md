@@ -18,3 +18,12 @@
 - **Name Server**: resolves DNS queries (Authoritative or Non-Authoritative)
 - **Top Level Domain (TLD)**: .com, .us, .in. .gov…
 - **Second Level Domain (SLD)**: amazon.com, google.com…
+
+## Route 53 - Records
+
+- How you want to route traffic for a domain
+- Each record contains:
+    - **Domain/subdomain Name** - eg. example.com
+    - **Record Type** - eg. A or AAAA
+    - **Value** - eg. 12.34.56.78
+    - **Routing Policy** - how Route 53 responds to queries

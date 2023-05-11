@@ -46,3 +46,14 @@
 - **Public Hosted Zones** - contains records that specify how to route traffic on the Internet (public domain names) application1.mypublicdomain.com
 - **Private Hosted Zones** - contain records that specify how you route traffic within one or more VPCs (private domain names) application1.company.internal
 - You pay $0.50 per month per hosted zone
+
+### Route 53 - Records TTL (Time To Live)
+
+- **High TTL - eg. 24hr**
+    - Less traffic on Route 53
+    - Possibly outdated records
+- **Low TTL - eg. 60 sec**
+    - More traffic on Route 53 ($$)
+    - Records are outdated for less time
+    - Easy to change records
+- **Except for Alias records, TTL is mandatory for each DNS record**

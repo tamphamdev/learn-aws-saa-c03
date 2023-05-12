@@ -57,3 +57,16 @@
     - Records are outdated for less time
     - Easy to change records
 - **Except for Alias records, TTL is mandatory for each DNS record**
+
+### CName vs Alias
+
+- AWS Resources (Load balancer, CloudFront…) expose an AWS hostname:
+    - [**abc.elb.amazonaws.com**](http://abc.elb.amazonaws.com) and you want **myapp.mydomain.com**
+- CNAME:
+    - Points a hostname to any other hostname. (app.mydomain.com ⇒ blabla.anything.com)
+    - **ONLY FOR NON ROOT DOMAIN ( something.mydomain.com)**
+- Alias:
+    - Points a hostname to an AWS Resource (app.mydomain.com ⇒ blabal.amazonaws.com)
+    - **Works for ROOT DOMAIN and NON ROOT DOMAIN (mydomain.com)**
+    - Free of charge
+    - Native health check

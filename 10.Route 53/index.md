@@ -70,3 +70,23 @@
     - **Works for ROOT DOMAIN and NON ROOT DOMAIN (mydomain.com)**
     - Free of charge
     - Native health check
+
+### Route 53 - Alias Records
+
+- Maps a hostname to an AWS resource
+- An extension to DNS functionality
+- Automatically recognizes changes in the resources IP addresses
+- Unlike CNAME, it can be used for the top node of a DNS namespace (Zone Apex): example.com
+- Alias Record is always of type A/AAAA for AWS resources (IPv4/IPv6)
+
+### Alias Records Targets
+
+- Elastic Load Balancers
+- CloudFront Distributions
+- API Gateway
+- Elastic Beanstalk environments
+- S3 Websites
+- VPC Interface Endpoints
+- Global Accelerator accelerator
+- Route 53 record in the same hosted zone
+- **You cannot set an ALIAS record for an EC2 DNS name**

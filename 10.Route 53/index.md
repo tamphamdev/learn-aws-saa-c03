@@ -90,3 +90,18 @@
 - Global Accelerator accelerator
 - Route 53 record in the same hosted zone
 - **You cannot set an ALIAS record for an EC2 DNS name**
+
+### Route 53 - Routing Policies
+
+- Define how Route 53 responds to DNS queries
+- Don’t get confused by the word “Routing”
+    - It’s not the same as Load balancer routing which routes the traffic
+    - DNS does not route any traffic, it only responds to the DNS queries
+- Route 53 Supports the following Routing Policies
+    - Simple
+    - Weighted
+    - Failover
+    - Latency based
+    - Geolocation
+    - Multi-value answer
+    - Geoproximity (using Route 53 Traffic Flow feature)

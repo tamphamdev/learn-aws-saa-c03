@@ -113,3 +113,30 @@
 - **If multiple values are returned, a random one is chosen by the client**
 - When Alias enabled, specify only one AWS resource
 - Can’t be associated with Health Checks
+
+### Routing Policies - Weighted
+
+- Control the % of the requests that go to each specific resource
+- Assign each record a relative weight:
+    - ***traffic (%)*** = *weight for a specific record* / *sum of all the weights for all records*
+    - Weights don’t need to sum up to 100
+- DNS records must have the same name and type
+- Can be associated with Health Checks
+- Use cases: loading balancing between regions, testing new application versions…
+- **Assign a weight of 0 to a record to stop sending traffic to a resource**
+
+### Routing Policies - Latency-based
+
+- Redirect to the resource that has the least latency close to us
+- Super helpful when latency for users is a priority
+- **Latency is based on traffic between users and AWS Regions**
+- Germany users may be directed to the US (if that’s the lowest latency)
+- Can be associated with Health Checks (has a failover capacity)
+
+### Route 53 - Health Checks
+
+- HTTP Health Checks are only for **public resources**
+- Health Check ⇒ Automated DNS Failover:
+    - Health checks that monitor an endpoint (application, server, other AWS resource)
+    - Health checks that monitor other health checks (Calculated Health Checks)
+    - Health checks that monitor CloudWatch Alarm (full control!!) - eg: throttles of DynamoDB, alarms on RDS, custom metrics, ….(helpful for private resources)

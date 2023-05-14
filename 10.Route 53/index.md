@@ -195,3 +195,18 @@
 - Can be associated with Health Checks (return only values for healthy resources)
 - Uo to 8 healthy records are returned for each Multi-value query
 - **Multi-value is not a substitute for having an ELB**
+
+### Domain Registrar vs DNS Service
+
+- You buy or register your domain name with a Domain Registrar typically by paying annual charges (eg GoDaddy, Amazon Registrar…)
+- The Domain Registrar usually provides you with a DNS service to manage your DNS records
+- But you can use another DNS service to manage your DNS records
+- Example: purchase the domain from GoDaddy and use Route 53 to manage your DNS record
+
+    ### 3rd Party Registrar with Amazon Route 53
+
+    - **If you buy your domain on a 3rd party registrar, you can still use Route 53 as the DNS Service provider**
+        1. Create a Hosted Zone in Route 53
+        2. Update NS Records on 3rd party website to use Route 53 **Name Servers**
+    - Domain Registrar ≠ DNS Service
+    - But every Domain Registrar usually comes with some DNS features

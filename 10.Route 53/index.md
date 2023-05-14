@@ -187,3 +187,11 @@
 - You provide a list of CIDRs for your clients and the corresponding endpoints/locations (user-IP-to-endpoint mappings)
 - Use cases: Optimize performance, reduce network costs…
 - Example: route end users from a particular ISP to a specific endpoint
+
+### Routing Policies - Multi-value
+
+- Use when routing traffic to multiple resources
+- Route 53 return multiple values/resources
+- Can be associated with Health Checks (return only values for healthy resources)
+- Uo to 8 healthy records are returned for each Multi-value query
+- **Multi-value is not a substitute for having an ELB**

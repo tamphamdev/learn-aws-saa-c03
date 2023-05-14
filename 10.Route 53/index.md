@@ -180,3 +180,10 @@
     - AWS resources (specify AWS region)
     - Non-AWS resources (specify Latitude and Longitude)
     - You must use Route 53 Traffic Flow (advanced) to use this feature
+
+### Routing Policies - IP-based Routing
+
+- Routing is based on client’s IP addresses
+- You provide a list of CIDRs for your clients and the corresponding endpoints/locations (user-IP-to-endpoint mappings)
+- Use cases: Optimize performance, reduce network costs…
+- Example: route end users from a particular ISP to a specific endpoint

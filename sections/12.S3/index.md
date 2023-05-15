@@ -77,8 +77,16 @@
 
 ### Bucket settings for Block Public Access
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3620ab2c-c474-46f2-8811-73fc4e8de8bb/Untitled.png)
 
 - **These settings were created to prevent company data leaks**
 - If you know your bucket should never be public, leave these on
 - Can be set at the account level
+
+## Amazon S3 - Static Website Hosting
+
+### Introduction
+
+- S3 can host static websites and have them accessible on the Internet
+- The website URL will be (depending on the region)
+    - http://bucket-name.s3-website-aws-region.amazonaws.com
+- If you get a **403 Forbidden** error, make sure the bucket policy allows public reads

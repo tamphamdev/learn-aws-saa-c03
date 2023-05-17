@@ -249,3 +249,10 @@ objects” are in fact hidden by a “delete marker” and can be recovered
 - Report is updated daily
 - 24 to 48 hours to start seeing data analysis
 - Good first step to put together Lifecycle Rules (or improve them)
+
+## Requester Pays
+
+- In general, bucket owners pay for all Amazon S3 storage and data transfer costs associated with their bucket
+- **With Requester Pays buckets**, the requester instead of the bucket owner pays the cost of the request and the data download from the bucket
+- Helpful when you want to share large datasets with other accounts
+- The requester must be authenticated in AWS (can not be anonymous)

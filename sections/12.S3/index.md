@@ -196,3 +196,12 @@
 - *Archive Instant Access tier (automatic)*: objects not accessed for 90 days
 - *Archive Access tier (optional)*: configurable from 90 days to 700+ days
 - *Deep Archive Access tier (optional)*: config from 180 days to 700+ days
+
+## Advanced Amazon S3
+
+### Moving between Storage Classes
+
+- You can transition objects between storage classes
+- For infrequently accessed object, move them to **Standard IA**
+- For archive objects that you don’t need fast access to, move them to Glacier or Glacier Deep Archive
+- Moving object can be automated using a Lifecycle Rules

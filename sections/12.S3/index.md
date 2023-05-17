@@ -205,3 +205,15 @@
 - For infrequently accessed object, move them to **Standard IA**
 - For archive objects that you don’t need fast access to, move them to Glacier or Glacier Deep Archive
 - Moving object can be automated using a Lifecycle Rules
+
+### Lifecycle Rules
+
+- **Transition Actions** - configure objects to transition to another storage class
+    - Move objects to Standard IA class 60 days after creation
+    - Move to Glacier for archiving after 6 months
+- **Expiration actions** - configure objects to expire (delete) after some time
+    - Access logs files can be set to delete after a 365 days
+    - **Can be used to delete old versions of file (if versioning is enabled)**
+    - Can be used to delete incomplete Multi-part uploads
+- Rules can be created for a certain prefix (example: s3://mybucket/mp3/*)
+- Rules can be created for certain objects Tags (example:Deparment:Finance)

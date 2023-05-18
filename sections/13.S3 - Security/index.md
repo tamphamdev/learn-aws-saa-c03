@@ -158,3 +158,12 @@
 - We can define the access point to be accessible only from within the VPC
 - You must create a VPC Endpoint to access the Access Point (Gateway or Interface Endpoint)
 - The VPC Endpoint Policy must allow access to the target bucket and Access Point
+
+### S3 - Object Lambda
+
+- Use AWS Lambda Functions to change the object before it is retrieved by the caller application
+- Only one S3 bucket is needed, on top of which we create **S3 Access Points** and **S3 Object Lambda Access Points**
+- Use cases:
+    - Redacting personally identifiable information for analytics or non-production environments
+    - Converting across data formats, such as converting XML to JSON
+    - Resizing and watermarking images on the fly using caller-specific details, such as the user who requested the object

@@ -144,3 +144,17 @@
 - **Legal Hold:**
     - Protect the object indefinitely, independent from retention period
     - can be freely placed and removed using the *s3:PutObjectLegalHold* IAM permission
+
+## S3 - Access Points
+
+
+- Access Points simplify security management for S3 buckets
+- Each Access Point has:
+    - its own DNS name (Internet Origin or VPC Origin)
+    - an access point policy (similar to bucket policy) - manage security at scale
+
+### S3 - Access Points - VPC Origin
+
+- We can define the access point to be accessible only from within the VPC
+- You must create a VPC Endpoint to access the Access Point (Gateway or Interface Endpoint)
+- The VPC Endpoint Policy must allow access to the target bucket and Access Point

@@ -100,3 +100,25 @@
     - List deleted versions
 - To use MFA Delete, **Versioning must be enabled** on the bucket
 - **Only the bucket owner (root account) can enable/disable MFA delete**
+
+## S3 Access Logs
+
+- For audit purpose, you may want to log all access to S3 buckets
+- Any request made to S3, from any account, authorized or denied, will be logged into another S3 bucket
+- That data can be analyzed using data analysis tools…
+- The target logging bucket must be in the same AWS region
+- **WARNING**:
+    - **Do not** set your logging bucket to be the monitored bucket
+    - It will create a logging loop and **your bucket will grow exponentially**
+
+## S3 - Pre-signed URLS
+
+- Generate pre-signed URLs using the **S3 Console**, **AWS CLI** or **SDK**
+- **URL Expiration**
+    - **S3 Console** - 1 min up to 720 mins (12 hours)
+    - **AWS CLI** - configure expiration with *—expires-in* parameter in seconds (default 3600 secs, max 604800 secs ~ 168 hours)
+- Users given a pre-signed URL inherit the permissions of the users that generated the URL for GET/PUT
+- Examples:
+    - Allow only logged-in users to download a premium video from your S3 bucket
+    - Allow an ever-changing list of users to download files by generating URLs dynamically
+    - Allow temporarily a user to upload a file to a precise location in your S3 bucket

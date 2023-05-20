@@ -202,3 +202,115 @@
 - UP to 1,000,000 IOPS with < 0.5ms latency
 - Snapshots, compression and low-cost
 - **Point-in-time instantaneous cloning (helpful for testing new workloads)**
+## Hybrid Cloud for Storage
+
+- AWS is pushing for “hybrid cloud”
+    - Part of your infrastructure is on the cloud
+    - Part of your infrastructure is on-premises
+- This can be due to
+    - Long cloud migrations
+    - Security requirements
+    - Compliance requirements
+    - IT strategy
+- S3 is proprietary storage technology (unlike EFS / NFS) , so how do you expose the S3 data on-premises?
+- AWS Storage Gateway
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/d78e23bc-94fa-4d2b-bd79-3b3c348731e7/Untitled.png)
+
+### AWS Storage Gateway
+
+- Bridge between on-premises data and cloud data
+- Use cases:
+    - disaster recovery
+    - backup & restore
+    - tiered storage
+    - on-premises cache & low-latency files access
+- Types of Storage Gateway:
+    - **S3 File Gateway**
+    - **FSx File Gateway**
+    - **Volume Gateway**
+    - **Tape Gateway**
+
+### Amazon S3 File Gateway
+
+- Configured S3 buckets are accessible using the NFS and SMB protocol
+- **Most recently used data is cached in the file gateway**
+- Supports S3 Standard, S3 Standard IA, S3 One Zone, S3 Intelligent Tiering
+- **Transition to S3 Glacier using a Lifecycle Policy**
+- Bucket access using IAM roles for each File Gateway
+- SMB Protocol has integration with Active Directory (AD) for user authentication
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/94e51c81-ac33-49af-8786-2e63c009d0fa/Untitled.png)
+
+### Amazon FSx File Gateway
+
+- Native access to Amazon FSx for Windows File Server
+- **Local cache for frequently accessed data**
+- Windows native compatibility (SMB, NTFS, Active Directory…)
+- Useful for group file shares and home directories
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/713b15fa-22d6-4409-ac11-ac4334853f03/Untitled.png)
+
+### Volume Gateway
+
+- Block storage using iSCSI protocol backed by S#
+- Backed by EBS snapshots which can help restore on-premises volumes
+- **Cached volumes**: low latency access to most recent data
+- **Stored volumes**: entire dataset is on premise, scheduled backups to S3
+
+### Tape Gateway
+
+- Some companies have backup processes using physical tapes (!)
+- With Tape Gateway, companies use the same processes but, in the cloud
+- Virtual Tape Library (VTL) backed by Amazon S3 and Glacier
+- Back up data using existing tape-based processes (and iSCSI interface)
+- Works with leading backup software vendors
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/951db9bf-8b86-4186-8d04-6f3c379aecf9/Untitled.png)
+
+### Storage Gateway - Hardware appliance
+
+- Using Storage Gateway means you need on-premises virtualization
+- Otherwise, you can use a Storage Gateway Hardware Appliance
+- You can buy it on amazon.com
+
+- Works with File Gateway, Volume Gateway, Tape Gateway
+- Has the required CPU, memory, network, SSD cache resources
+
+### AWS Storage Gateway
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/7c718045-b0fb-4996-b13c-2c39af24ac36/Untitled.png)
+
+## AWS Transfer Family
+
+- A fully-managed service for file transfers into and out of Amazon S3 or Amazon EFS using the FTP protocol
+- Supported Protocols
+    - **AWS Transfer for FTP** (File Transfer Protocol (FTP))
+    - **AWS Transfer for FTPS** (File Transfer Protocol over SSL (FTPS))
+    - **AWS Transfer for SFTP** (Secure File Transfer Protocol (SFTP))
+- Managed infrastructure, Scalable, Reliable, Highly Available (multi-AZ)
+- Pay per provisioned endpoint per hour + data transfers in GB
+- Store and manage users’ credential within the service
+- Integrate with existing authentication systems (Microsoft Active Directory, LDAP, Okta, Amazon Cognito, custom)
+- Usage: sharing files, public datasets, CRM, ERP…
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/53524293-4067-4b9c-bd23-cc8ffcf05694/Untitled.png)
+
+## AWS DataSync
+
+- Move large amount of data to and from
+    - On-premises / other cloud to AWS (NFS, SMB, HDFS, S3 API…) - **needs agent**
+    - AWS to AWS (different storage services) - no agent needed
+- Can synchronize to:
+    - Amazon S3 (any storage classes - including Glacier)
+    - Amazon EFS
+    - Amazon FSx (Windows, Lustre, NetApp, OpenZFS…)
+- Replication tasks can be scheduled hourly, daily, weekly.
+- **File permissions and metadata are preserved (NFS POSIX, SMB…)**
+- One agent task can use 10Gbps, can setup a bandwidth limit
+
+### AWS DataSync - NFS / SMB to AWS (S3, EFS, FSx…)
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/4c697c52-d073-4a80-8511-9e812e7bcadf/Untitled.png)
+
+### AWS DataSync - Transfer between AWS storage services

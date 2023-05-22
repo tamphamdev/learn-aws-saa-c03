@@ -83,3 +83,17 @@
 - **SQS Access Policies** (similar to S3 bucket policies)
     - Useful for cross-account access to SQS queues
     - Useful for allowing other services (SNS, S3…) to write to an SQS queue
+
+### SQS - Message Visibility Timeout
+
+- After a message is polled by a consumer, it becomes invisible to other consumers
+- Be default, the “message visibility timeout” is 30 seconds
+- That means the message has 30 seconds to be processed
+- After the message visibility timeout is over, the message is “visible” in SQS
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/d058dbe3-7f44-47e2-915d-48438f784b4c/Untitled.png)
+
+- If a message is not processed within the visibility timeout, it will be processed **twice**
+- A consumer could call the **ChangeMessageVisibility** API to get more time
+- If visibility timeout is high (hours), and consumer crashes, re-processing will take time
+- If visibility timeout is too low (seconds), we may get duplicates

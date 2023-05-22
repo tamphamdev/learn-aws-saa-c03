@@ -110,9 +110,100 @@
 ### SQS - FIFO Queue
 
 - FIFO = First In First Out (ordering of messages in the queue)
-
-[]()
-
 - Limited throughput: 300msg/s without batching, 3000msg/s with batching
 - Exactly-once send capacity (by removing duplicates)
 - Messages are processed in order by the consumer
+
+### SQS with Auto Scaling Group (ASG)
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/645dac4f-abbc-4b98-bbf9-9b2a9e9c9383/Untitled.png)
+
+### SQS as a buffer to database write
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/1c0519f2-c19a-46d9-895b-e29cbf246547/Untitled.png)
+
+### SQS to decouple between application tiers
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/5ac42468-b037-44cb-8477-0fb87f89dab3/Untitled.png)
+
+## Amazon SNS
+
+- What if you want to send one message to many receivers?
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/701b9a0a-63c4-4990-a662-5d83fc41bf7f/Untitled.png)
+
+### Amazon SNS - Simple Notification Service
+
+- The “event producer” only sends message to one SNS topic
+- As many “event receivers” (subscriptions) as we want to listen to the SNS topic notifications
+- Each subscriber to the topic will get all the messages (note: new feature to filter messages)
+- Up to 12,500,000 subscriptions per topic
+- 100,000 topics limit
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/938c6492-2a94-4f5d-b11d-4fd0a9bd4241/Untitled.png)
+
+### AWS SNS - How to publish
+
+- Topic Publish (using the SDK)
+    - Create a topic
+    - Create a subscription (or many)
+    - Publish to the topic
+- Direct Publish (for mobile apps SDK)
+    - Create a platform application
+    - Create a platform endpoint
+    - Publish to the platform endpoint
+    - Works with Google GCM, Apple APNS, Amazon ADM…
+
+### Amazon SNS - Security
+
+- **Encryption**:
+    - In-flight encryption using HTTPS API
+    - At-rest encryption using KMS keys
+    - Client-side encryption if the client wants to perform encryption/decryption itself
+- **Access Controls**: **IAM policies to regulate access to the SNS API**
+- **SNS Access Policies** (similar to S3 bucket policies)
+    - Useful for cross-account access to SNS topics
+    - Useful for allowing other services (S3…) to write to an SNS topic
+
+### SNS + SQS : Fan out
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/349a9fad-58b3-4860-8d39-3f46b67afaee/Untitled.png)
+
+- Push once in SNS. receive in all SQS queue that are subscribers
+- Fully decoupled, data data loss
+- SQS allows for: data persistence, delayed processing and retries of work
+- Ability to add more SQS subscribers over time
+- Make sure your SQS queue **access policy** allows for SNS to write
+- Cross-Region Delivery: works with SQS Queues in other regions
+
+### Application: S3 Events to multiple queues
+
+- For the same combination of : **event type** (eg: object create) and **prefix** (eg: images/) you can only have one S3 Event rule
+- IF you want to send the same S3 event to many SQS queues, use fan-out
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/dc28f5e0-74a9-4e16-8872-68e0a6887ef1/Untitled.png)
+
+### Application: SNS to Amazon S3 through Kinesis Data Firehose
+
+- SNS can send to Kinesis and therefore we can have the following solutions architecture:
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/4f09f08d-0da7-4be4-9619-b6fb252bc836/Untitled.png)
+
+### Amazon SNS - FIFO Topic
+
+- FIFO = First In First Out (ordering of messages in the topic)
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/aeed5f52-0b9b-4cf6-8556-a7df067cd8d0/Untitled.png)
+
+- Similar features as SQS FIFO:
+    - Ordering by Message Group ID (all messages in the same group are ordered)
+    - Deduplication using a Deduplication ID or Content Based Deduplication
+- **Can only have SQS FICO queues as subscribers**
+- Limited throughput (same throughput as SQS FIFO)
+
+### SNS - Message Filtering
+
+- JSON policy used to filter messages sent to SNS topic’s subscriptions
+- If a subscription doesn’t have filter policy, it receives every message
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/9e4c0878-3454-4987-a52c-a7294abd4002/Untitled.png)

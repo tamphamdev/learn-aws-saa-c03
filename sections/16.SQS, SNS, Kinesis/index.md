@@ -207,3 +207,17 @@
 - If a subscription doesn’t have filter policy, it receives every message
 
 ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/9e4c0878-3454-4987-a52c-a7294abd4002/Untitled.png)
+
+## Kinesis (streaming)
+
+### Overview
+
+- Makes it easy to collect, process, and analyze streaming data in real-time
+- Ingest real-time dat such as: Application logs, Metrics, Website clickstreams, IoT telemetry data..
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/210c1015-0d62-4da7-af04-c407e61db840/Untitled.png)
+
+- **Kinesis Data Streams**: capture, process and store data streams
+- **Kinesis Data Firehose**: load data streams into AWS data stores
+- **Kinesis Data Analytics**: analyze data streams with SQL or Apache Flink
+- Kinesis Video Streams: capture, process and store video streams

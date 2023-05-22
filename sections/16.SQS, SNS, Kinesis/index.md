@@ -221,3 +221,40 @@
 - **Kinesis Data Firehose**: load data streams into AWS data stores
 - **Kinesis Data Analytics**: analyze data streams with SQL or Apache Flink
 - Kinesis Video Streams: capture, process and store video streams
+
+### Kinesis Data Streams
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a5c5242a-21da-449f-bf03-9199bdedeaa2/Untitled.png)
+
+- Retention between 1 day to 36 days
+- Ability to process (replay) data
+- Once data is inserted in Kinesis, it can’t be deleted (immutability)
+- Data that shares the same partition goes to the same shard (ordering)
+- Producers: AWS SDK, Kinesis Producer Library (KPL), Kinesis Agent
+- Consumers:
+    - Write your own: Kinesis Client Library (KCL), AWS SDK
+    - Managed: AWS Lambda, Kinesis Data Firehose, Kinesis Data Analytics
+
+### Kinesis Data Streams - Capacity Modes
+
+- Provisioned mode:
+    - You choose the number of shards provisioned, scale manually or using APO
+    - Each shard gets 1MB/s in (or 1000 records per second)
+    - Each shard gets 2MB/s out (classic or enhanced fan-out consumer)
+    - You pay per shared provisioned per hours
+- On-demand mode:
+    - No need to provision or manage the capacity
+    - Default capacity provisioned (4Mb/s in or 4000 records per second)
+    - Scales automatically based on observed throughput peak during the last 30days
+    - Pay per stream per hour & data in/out per GB
+
+### Kinesis Data Stream Security
+
+- Control access / authorization using IAM policies
+- Encryption in flight using HTTPS endpoints
+- Encryption at rest using KMS
+- You can implement encryption/decryption of data on client side (harder)
+- VPC Endpoints available for Kinesis to access within VPC
+- Monitor API calls using CloudTrail
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c64d5c81-c361-49fe-9eeb-78951da58fcc/Untitled.png)

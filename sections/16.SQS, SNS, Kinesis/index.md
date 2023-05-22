@@ -97,3 +97,22 @@
 - A consumer could call the **ChangeMessageVisibility** API to get more time
 - If visibility timeout is high (hours), and consumer crashes, re-processing will take time
 - If visibility timeout is too low (seconds), we may get duplicates
+
+### SQS - Long Polling
+
+- When a consumer requests messages from the queue, it can optionally “wait” for messages to arrive if there are none in the queue
+- This is called Long Polling
+- **LongPolling decrease the number of API calls made to SQS while increasing the efficiency and latency of your application**
+- The wait time can be between 1 sec to 20 sec (20 sec preferable)
+- Long Polling is preferable to Short Polling
+- Long Polling can be enabled at the queue level or at the API level using **WaitTimeSeconds**
+
+### SQS - FIFO Queue
+
+- FIFO = First In First Out (ordering of messages in the queue)
+
+[]()
+
+- Limited throughput: 300msg/s without batching, 3000msg/s with batching
+- Exactly-once send capacity (by removing duplicates)
+- Messages are processed in order by the consumer

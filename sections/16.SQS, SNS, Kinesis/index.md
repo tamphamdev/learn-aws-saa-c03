@@ -329,3 +329,21 @@ Kinesis Data Firehose
     - You will have 100 Group ID
     - You can have up to 100 Consumers (due to the 100 Group ID)
     - You have up to 300 messages per second (or 3000 if using batching)
+
+### SQS vs SNS vs Kinesis
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/eb6a70f1-2c4a-450e-b753-fd2cdebaed2a/Untitled.png)
+
+## Amazon MQ
+
+- SQS, SNS are “cloud-native” services, : proprietary protocols from AWS
+- Traditional applications running from on-premises may use open protocols such as: MQTT, AMQP, STOMP, Openwire, WSS
+- When migrating to the cloud, instead of re-engineering the application to use SQS and SNS, we can use Amazon MQ
+- Amazon MQ is a managed message broker service for: **RabbitMQ** and **ActiveMQ**
+- Amazon MQ doesn’t “scale” as much as SQS/SNS
+- Amazon MQ runs on servers, can run in Multi-AZ with failover
+- Amazon MQ has both queue feature (~SQS) and topic features (~SNS)
+
+### High Availability
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/05a9b170-aaea-4219-b51e-25531a55ac89/Untitled.png)

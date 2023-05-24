@@ -258,3 +258,38 @@
 - Monitor API calls using CloudTrail
 
 ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c64d5c81-c361-49fe-9eeb-78951da58fcc/Untitled.png)
+### Kinesis Data Firehose
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ed27975d-8ffe-4b5b-8f5d-b51cfa432f40/Untitled.png)
+
+- Fully Managed Service, no administration, automatic scaling, serverless
+    - AWS: Redshift / Amazon S3 / OpenSearch
+    - 3rd party partner: Splunk / MongoDB / DataDog / NewRelic….
+    - Custom: send to any HTTP endpoint
+- Pay for data going through Firehose
+- **Near Real Time**
+    - 60 seconds latency minimum for non full batches
+    - Or minimum 1MB of data at a time
+- Supports many data formats, conversions, transformations, compression
+- Supports custom data transformations using AWS Lambda
+- Can send failed or all data to a backup S3 bucket
+
+### Kinesis Data Streams vs Firehose
+
+Kinesis Data Streams
+
+- Streaming service for ingest at scale
+- Write custom code (producer / consumer)
+- Real-time (~200ms)
+- Manage scaling (shard splitting/ merging)
+- Data storage for 1 to 365 days
+- Supports replay capability
+
+Kinesis Data Firehose
+
+- Load streaming data into S3 / Redshift / OpenSearch / 3rd party / custom HTTP
+- Fully managed
+- Near real-time (buffer time min.60s)
+- Automatic scaling
+- No data storage
+- Doesn’t support replay capability

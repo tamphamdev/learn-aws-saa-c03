@@ -57,3 +57,37 @@
 - Docker filter sau khi build sẽ trở thành Docker Image
 - Push/pull docker image lên gọi là Docker Repository
 - Docker Image khi chạy sẽ trở thành Docker Container
+
+### Amazon ECS - EC2 Launch Type
+
+- ECS = Elastic Container Service
+- **Launch Docker containers on AWS = Launch ECS Task on ECS Cluster**
+- **EC2 Launch Type: you must provision & maintain the infrastructure (the EC2 instances)**
+- Each EC2 Instance must run the ECS Agent to register in the ECS Cluster
+- AWS takes care of starting / stopping containers
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/9453a94d-d0e1-43fd-aef4-bad0203df11a/Untitled.png)
+
+### Amazon ECS - Fargate Launch Type
+
+- Launch Docker container on AWS
+- **You don’t provision the infrastructure (no EC2 instances to manage)**
+- **It’s all Serverless!**
+- You just create task defininitions
+- AWS just runs ECS Task for you based on the CPU / RAM you need
+- To scale, just increase the number of tasks. Simple - no more EC2 instances
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f072035d-0a7a-4f52-8a5e-c2922a4687c9/Untitled.png)
+
+### Amazon ECS - IAM Roles for ECS
+
+- **EC2 Instance Profile (EC2 Launch Type only):**
+    - Used by the ECS agent
+    - Makes API calls to ECS service
+    - Send container logs to CloudWatch Logs
+    - Pull Docker image from ECR
+    - Reference sensitive data in Secrets Manager or SSM Parameter Store
+- **ECS Task Role:**
+    - Allow each task to have a specific role
+    - Use different roles for the different ECS Services you run
+    - Task Role is defined in the **task definition**

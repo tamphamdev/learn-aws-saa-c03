@@ -91,3 +91,21 @@
     - Allow each task to have a specific role
     - Use different roles for the different ECS Services you run
     - Task Role is defined in the **task definition**
+
+### Amazon ECS - Load Balancer Integrations
+
+- **Application Load Balancer** supported and works for most use cases
+- **Network Load Balancer** recommended only for high throughput / high performance use cases, or to pair it with AWS Private Link
+- **Elastic Load Balancer** supported but not recommended (no advanced features - no Fargate)
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/d2669c21-786b-408c-a33f-4d73ad5bc9b6/Untitled.png)
+
+### Amazon ECS - Data Volumes (EFS)
+
+- Mount EFS file systems onto ECS tasks
+- Works for both **EC2** and **Fargate** launch types
+- Tasks running in any AZ will share the same data in the EFS file system
+- **Fargate + EFS = Serverless**
+- Use cases: persistent multi-AZ shared storage for your containers
+- Note:
+    - Amazon S3 cannot be mounted as a file system

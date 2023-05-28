@@ -201,3 +201,14 @@
     - Amazon EFS (work with Fargate)
     - Amazon FSx for Lustre
     - Amazon FSx for NetApp ONTAP
+
+## AWS App Runner
+
+- Fully managed service that makes it easy to deploy web applications and APIs at scale
+- No infrastructure experience required
+- Start with your source code or container image
+- Automatically builds and deploy the web app
+- Automatic scaling, highly available, load balancer, encryption
+- VPC access support
+- Connect to database, cache, and message queue services
+- Use case: web apps, APIs, microservices, rapid production, deployment

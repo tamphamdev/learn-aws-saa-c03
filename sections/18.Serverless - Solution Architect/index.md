@@ -415,3 +415,13 @@ Amazon Lambda
     - If using Edge-Optimized endpoint, then the certificate must be in us-east-1
     - If using Regional endpoint, the certificate must be in the API Gateway region
     - Must setup CNAME or A-alias record in Route 53
+
+### AWS Step Functions
+
+- Build serverless visual workflow to orchestrate your Lambda functions
+- **Features**: sequence, parallel, conditions, timeouts, error handling…
+- Can integrate with EC2, ECS, On-premises servers, API Gateway, SQS queues, etc…
+- Possibility of implementing human approval feature
+- **Use cases**: order fulfillment, data processing, web applications, any workflow
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/20cf96b1-8262-4140-aee9-4d571c5f863b/Untitled.png)

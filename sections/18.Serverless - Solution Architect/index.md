@@ -278,3 +278,86 @@ Amazon Lambda
     - No capacity planning needed
     - Pay for what you use, more expensive ($$$)
     - Great for unpredictable workloads, steep sudden spikes
+
+### DynamoDB Accelerator (DAX)
+
+- Fully-managed, highly available, seamless in-memory cache for DynamoDB
+- Help solve read congestion by caching
+- Microseconds latency for cached data
+- Doesn’t require application logic modification (compatible with existing DynamoDB APIs)
+- 5 minutes TTL for cache (Default)
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/0dc0a53e-a9db-4607-a229-64818ae3b8d7/Untitled.png)
+
+### DynamoDB Accelerator (DAX) vs ElasticCache
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/73dad9f7-134b-420b-93f5-abe4512079f8/Untitled.png)
+
+### DynamoDB - Stream Processing
+
+- Ordered stream of item-level modifications (create/update/delete) in a table
+- Use cases:
+    - React to changes in real-time (welcome email to users)
+    - Real-time usage analytics
+    - Insert into derivative tables
+    - Implement cross-region replication
+    - Invoke AWS Lambda on changes to your DynamoDB table
+
+**DynamoDB Streams**
+
+- 24 hours retention
+- Limited # of consumers
+- Process using AWS Lambda Triggers, or DynamoDB Stream Kinesis adapter
+
+**Kinesis Data Streams (newer)**
+
+- 1 year retention
+- High # of consumers
+- Process using AWS Lambda, Kinesis Data Analytics, Kinesis Data Firehose, AWS Glue Streaming ETL…
+
+### DynamoDB Streams
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e4bb59b7-65f6-41e6-942f-1262e11945a0/Untitled.png)
+
+### DynamoDB Global Tables
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/1cba1092-0f3e-4348-a369-fe9f6936e0eb/Untitled.png)
+
+- Make a DynamoDB table accessible with low latency in multiple-regions
+- Active-Active replication
+- Applications can **READ** and **WRITE** to the table in any region
+- Must enable DynamoDB Streams as a pre-requisite
+
+### DynamoDB - Time To Live (TTL)
+
+- Automatically delete items after an expiry timestamp
+- Use cases: reduce stored data by keeping only current items, adhere to regulatory obligations, web session handling…
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ad797340-eba5-494b-af5e-8cc96c8b4e2a/Untitled.png)
+
+### DynamoDB - Backups for disaster recovery
+
+- Continuous backups using point-in-time recovery (PITR)
+    - Optionally enabled for the last 35 days
+    - Point-in-time recovery to any time within the backup window
+    - The recovery process creates a new table
+- On-demand backups
+    - Full backups for long-term retention, until explicitly deleted
+    - Doesn’t affect performance or latency
+    - Can be configured and managed in AWS backup (enables cross-region copy)
+    - The recovery process creates a new table
+
+### DynamoDB - Integration with Amazon S3
+
+- Export to S3 (must enable PITR)
+    - Works for any point of time in the last 35 days
+    - Doesn’t affect the read capacity of your table
+    - Perform data analysis on top of DynamoDB
+    - Retain snapshots for auditing
+    - ETL on top of S3 data before importing back into DynamoDB
+    - Export in DynamoDB JSON or ION format
+- Import from S3
+    - Import CSV, DynamoDB JSon or ION format
+    - Doesn’t consume any write capacity
+    - Creates a new table
+    - Import errors are logged in CloudWatch logs

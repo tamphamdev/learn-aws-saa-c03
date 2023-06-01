@@ -167,3 +167,71 @@ Amazon Lambda
 - Your code depends on a 3rd libraries (eg. AWS SDK to access other AWS services)
 - Network access to use external services for processing
 - File system access or access to the body of HTTP requests
+
+### CloudFront Functions vs Lambda@Edge
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/b98f2b1c-765d-4111-ad8a-28f013a82e36/Untitled.png)
+
+### Use cases
+
+### CloudFront Functions
+
+- Cache key normalization
+    - Transform request attributes (headers, cookies, query strings, URL) to create an optimal Cache Key
+- Header manipulation
+    - Insert/modify/delete HTTP headers in the request or response
+- URL rewrites or redirects
+- Request authentication & authorization
+    - Create and validate user-generated token (eg, JWT) to allow/deny requests
+
+### Lambda@Edge
+
+- Longer execution time (several ms)
+- Adjustable CPU or memory
+- Your code depends on a 3rd libraries (eg. AWS SDK to access other AWS services)
+- Network access to use external services for processing
+- File system access or access to the body of HTTP requests
+
+### Lambda by default
+
+- By default, your Lambda function is launched outside your own VPC (in an AWS-owned VPC)
+- Therefore, it cannot access resources in your VPC (RDS, ElasticCache, internal ELB…)
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ad20aec8-6749-4773-b19d-367c0c245029/Untitled.png)
+
+### Lambda in VPC
+
+- You must define the VPC ID, the Subnets and the Security Groups
+- Lambda will create an ENI (Elastic Network Interface) in your subnets
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/1708af00-d65c-4537-a21b-03d64ea6fbd2/Untitled.png)
+
+### Lambda with RDS Proxy
+
+- If Lambda functions directly access your database, they may open too many connections under high load
+- RDS Proxy
+    - Improve scalability by pooling and sharing DB connections
+    - Improve availability by reducing by 66% the failover time and preserving connections
+    - Improve security by enforcing IAM authentication and storing credentials in Secrets Manager
+- **The Lambda function must be deployed in you VPC, because RDS Proxy is never publicly accessible**
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f0a72294-f960-4c67-8ed7-5cde596e20ec/Untitled.png)
+
+### Invoking Lambda from RDS & Aurora
+
+- Invoke Lambda functions from within your DB instance
+- Allows you to process **data events** from within a database
+- Supported for **RDS for PostgreSQL and Aurora MySQL**
+- **Must allow outbound traffic to your Lambda function** from within your DB instance (Public, NAT Gateway, VPC Endpoints)
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c1460d86-4036-49a6-8244-2875ad6fa885/Untitled.png)
+
+### RDS Event Notifications
+
+- Notifications that tells information about the DB instance itself (created, stopped, start…)
+- You don’t have any information about the data itself
+- Subscribe to the following event categories: **DB instance, DB snapshot, DB Parameter Group, DB Security Group, RDS Proxy, Custom Engine Version**
+- Near real-time events (up to 5 minutes)
+- Send notifications to SNS or subscribe to events using EventBridge
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f3600287-83cb-4a04-a943-f12abfd98920/Untitled.png)

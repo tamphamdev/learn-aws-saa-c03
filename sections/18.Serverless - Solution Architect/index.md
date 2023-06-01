@@ -102,3 +102,68 @@ Amazon Lambda
     - Size of uncompressed deployment (code + dependencies): 250MB
     - Can use the /tmp directory to load other files at startup
     - Size of environment variables: 4KB
+
+    ### Customization At The Edge
+
+- Many modern applications execute some form of the logic at the edge
+- **Edge Function:**
+    - A code that you write and attach to CloudFront distributions
+    - Run close to your users to minimize latency
+- CloudFront provides two types: **CloudFront Functions** & **Lambda@Edge**
+- You don’t have to manage any servers, deployed globally
+
+### CloudFront Functions & Lambda@Edge Use Cases
+
+- Website Security and Privacy
+- Dynamic Web Application at the Edge
+- Search Engine Optimization (SEO)
+- Intelligently Route Across Origin and Data Centers
+- Bot Mitigation at the Edge
+- Real-time Image Transformation
+- A/B Testing
+- User Authentication and Authorization
+- User Prioritization
+
+### CloudFront Functions
+
+- Lightweight functions written in JavaScript
+- For high-scale, latency-sensitive CDN customizations
+- Sub-ms startup times, **millions of requests/second**
+- Used to change Viewer requests and responses:
+    - **Viewer Request**: after CloudFront receives a request from a viewer
+    - **Viewer Response**: before CloudFront forwards the response to the viewer
+
+### Lambda@Edge
+
+- Lambda functions written in NodeJs or Python
+- Scales to 1000s of requests/second
+- Used to change CloudFront requests and responses:
+    - **Viewer Request**: after CloudFront receives a request from a viewer
+    - **Origin Request**: before CloudFront forwards the request to the origin
+    - **Origin Response:** after CloudFront receives the response from the origin
+    - **Viewer Response**: before CloudFront forwards the response to the viewer
+- Author your functions in one AWS Region (us-east-1) then CloudFront replicates to its locations
+
+### CloudFront Functions vs Lambda@Edge
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/b98f2b1c-765d-4111-ad8a-28f013a82e36/Untitled.png)
+
+### Use cases
+
+### CloudFront Functions
+
+- Cache key normalization
+    - Transform request attributes (headers, cookies, query strings, URL) to create an optimal Cache Key
+- Header manipulation
+    - Insert/modify/delete HTTP headers in the request or response
+- URL rewrites or redirects
+- Request authentication & authorization
+    - Create and validate user-generated token (eg, JWT) to allow/deny requests
+
+### Lambda@Edge
+
+- Longer execution time (several ms)
+- Adjustable CPU or memory
+- Your code depends on a 3rd libraries (eg. AWS SDK to access other AWS services)
+- Network access to use external services for processing
+- File system access or access to the body of HTTP requests

@@ -75,3 +75,28 @@
 - The Lambda function had an IAM role which could use SES
 - SES (Simple Email Service) was used to send emails in a serverless way
 - S3 can trigger SQS/SNS Lambda to notify of events
+
+## Software updates offloading
+
+- We have an application running on EC2, that distributes software updates once in a while
+- When a new software update is out, we get a lot of request and the content is distributed in mass over the network. It’s very costly
+- We don’t want to change our application, but want to optimize our cost and CPI, how can we do it?
+
+### Our application current state
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/2ca6e20a-89ff-48fc-a078-5698f57bd245/Untitled.png)
+
+### Easy way to fix things!
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/46262225-ddf1-43f7-bacd-b5e9092c983e/Untitled.png)
+
+### Why CloudFront?
+
+- No changes to architecture
+- Will cache software update files at the edge
+- Software update files are not dynamic, they’re static (never changing)
+- Our EC2 instances aren’t servreless
+- But CloudFront is, and will scale for us
+- Our ASG will not scale as much, and we’ll save tremendously in EC2
+- We’ll also save in availability, network bandwidth cost, etc
+- Easy way to make an existing application more scalable and cheaper

@@ -91,3 +91,13 @@
 - **Performance**: Multi-part upload, S3 Transfer Acceleration, S3 Select
 - **Automation**: S3 Event Notifications (SNS, SQS, Lambda, EventBridge)
 - **Use cases**: static files, key value store for big files, website hosting
+
+## DocumentDB (MongoDB)
+
+- Aurora is an “AWS-implementation” of PostgreSQL / MySQL…
+- DocumentDB is the same for MongoDB (which is a NoSQL database)
+- MongoDB is used to store, query, and index JSON data
+- Similar “deployment concepts” as Aurora
+- Fully Managed, highly available with replication across 3 AZ
+- DocumentDB storage automatically grows in increments of 10GB, up to 64TB
+- Automatically scale to workloads with millions of requests per seconds

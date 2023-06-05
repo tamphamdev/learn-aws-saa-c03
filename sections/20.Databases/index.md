@@ -138,3 +138,19 @@
 - **Immutable** system: no entry can be removed or modified, cryptographically verifiable
 - 2-3x better performance. than common ledger blockchain frameworks, manipulate data using SQL
 - Difference with Amazon Managed Blockchain: **no decentralization component**, in accordance with financial regulation rules
+
+## Amazon Timestream
+
+- Fully managed, fast, scalable, serverless time series database
+- Automatically scales up/down to adjust capacity
+- Store and analyze trillions of events per day
+- 1000s times faster & 1/10th the cost of relational databases
+- Scheduled queries, multi-measure records, SQL compatibility
+- Data storage tiering: recent data kept in memory and historical data kept in a cost-optimized storage
+- Built-in time series analytics functions (helps you identify patterns in your data in near real-time)
+- Encryption in transit and at rest
+- Use cases: IoT apps, operational applications, real-time analytics…
+
+### Amazon Timestream - Architecture
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/39a05ab7-7932-47d7-9245-5a3c72047de0/Untitled.png)

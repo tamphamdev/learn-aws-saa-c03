@@ -77,3 +77,17 @@
 - **Export to S3 without using RCU within the PITR window, import from S3 without using WCU**
 - **Great to rapidly evolve schemas**
 - **Use case**: Severless applications development (small documents 100s KB), distributed serverless cache
+
+## Amazon S3
+
+- S3 is a…key / value store for objects
+- Great for bigger objects, not so great for many small objects
+- Serverless, scales infinitely, max object size is 5TB, versioning capability
+- **Tiers**: S3 Standard, S3 Infrequent Access, S3 Intelligent, S3 Glacier + lifecycle policy
+- **Features**: Versioning, Encryption, Replication, MFA-Delete, Access Logs…
+- **Security**: IAM, Bucket Policies, ACL, Access Points, Object Lambda, CORS, Object/Vault Lock
+- **Encryption**: SSE-S3, SSE-KMS, SSE-C, client-side, TLS in transit default encryption
+- **Batch operations** on objects using S3 Batch, listing files using S3 Inventory
+- **Performance**: Multi-part upload, S3 Transfer Acceleration, S3 Select
+- **Automation**: S3 Event Notifications (SNS, SQS, Lambda, EventBridge)
+- **Use cases**: static files, key value store for big files, website hosting

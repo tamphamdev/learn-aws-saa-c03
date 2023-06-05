@@ -21,3 +21,17 @@
 - **Ledger**: Amazon Quantum Ledger Database
 - **Time series**: Amazon Timestream
 - Note: some database are being discussed in the Data & Analytics section
+
+## Amazon RDS
+
+- Managed PostgreSQL / MySQL / Oracle / SQL Server / MariaDB / Custom
+- Provisioned RDS Instance Size and EBS Volume Type & Size
+- Auto-scaling capability for Storage
+- Support for Read Replicas and Multi AZ
+- Security through IAM, Security Groups, KMS, SSL in transit
+- Automated Backup with Point in time restore feature (up to 35 days)
+- Manual DB Snapshot for longer-term recovery
+- Managed and Scheduled maintenance (with downtime)
+- Support IAM Authentication, integration with Secrets Manager
+- RDS Custom for access to and customize the underlying instance (Oracle & SQL Server)
+- **Use cases**: Store relational datasets (RDBMS / OLTP), perform SQL queries, transactions

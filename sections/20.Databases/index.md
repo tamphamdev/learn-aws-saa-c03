@@ -115,3 +115,16 @@
 - Can store up to billions of relations and query the graph with milliseconds latency
 - Highly available with replications across multiple AZs
 - Great for knowledge graphs (Wikipedia), fraud detection, recommendation engines, social networking
+
+## Amazon Keyspaces (for Apache Cassandra)
+
+- *Apache Cassandra is an open-source NoSQL distributed database*
+- A managed Apache Cassandra-compatible database service
+- Serverless, Scalable, highly available, fully managed by AWS
+- Automatically scale tables up/down based on the application’s traffic
+- Tables are replicated 3 times across multiple AZ
+- Using the Cassandra Query Language (CQL)
+- Single-digit millisecond latency at any scale, 1000s of requests per second
+- Capacity: On-demand mode or provisioned mode with auto-scaling
+- Encryption, backup, Point-in-Time Recovery (PITR) up to 35 days
+- Use case: store IoT devices info, time-series data….

@@ -120,3 +120,31 @@
     - Reserved (min 1 year): cost savings (EMR will automatically use if available)
     - Spot Instances: cheaper, can be terminated, less reliable
 - Can have long-running cluster, or transient (temporary) cluster
+
+## Amazon QuickSight
+
+- **Serverless machine learing-powered business intelligence service to create interactive dashboards**
+- Fast, automatically scalable, embeddable, with per-session pricing
+- Use cases:
+    - Business analytics
+    - Building visualizations
+    - Perform ad-hoc analysis
+    - Get business insights using data
+- Integrated with RDS, Aurora, Athena, Redshift, S3…
+- **In-memory computation using SPICE** engine if data is imported into QuickSight
+- Enterprise edition: Possibility to setup **Column-Level security (CLS)**
+
+### QuickSight Integrations
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/66357067-54a1-4695-bfb7-045cf5bb27e8/Untitled.png)
+
+### Dashboard & Analysis
+
+- Define Users (standard versions) and Groups (enterprise version)
+    - These users & groups only exist within QuickSight, not IAM!!
+- A *dashboard*…
+    - is a read-only snapshot of an analysis that you can share
+    - preserves the configuration of the analysis (filtering, parameters, controls, sort)
+- **You can share the analysis or the dashboard with Users or Groups**
+- To share a dashboard, you must first publish it
+- Users who see the dashboard can also see the underlying data

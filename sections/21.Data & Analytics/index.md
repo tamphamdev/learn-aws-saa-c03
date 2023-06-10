@@ -75,3 +75,27 @@
 - The query is then submitted to thousands of Redshift Spectrum nodes
 
 ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8ae21f2c-99d0-4c98-aab8-c35498fbcaf3/Untitled.png)
+
+## Amazon OpenSearch Service
+
+- ***Amazon OpenSearch is successor to Amazon ElasticSearch***
+- In DynamoDB, queries only exist by primary key or indexes…
+- **With OpenSearch, you can search any field, even partially matches**
+- It’s common to use OpenSearch as a complement to another database
+- Two modes: managed cluster or serverless cluster
+- Does not natively support SQL (can be enabled via a plugin)
+- Ingestion from Kinesis Data Firehose, AWS IoT, and CloudWatch Logs
+- Security through Cognito & IAM, KMS encryption, TLS
+- Comes with OpenSearch Dashboards (visualization)
+
+### OpenSearch patterns DynamoDB
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8f5c6c71-ca0f-4382-8b77-c23ad757336a/Untitled.png)
+
+### OpenSearch patterns CloudWatch Logs
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/619831b2-630d-4011-87c1-1284a615755b/Untitled.png)
+
+### OpenSearch patterns Kinesis Data Streams & Kinesis Data Firehose
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/78eec671-4ac7-4c66-97a5-9573282dabbe/Untitled.png)

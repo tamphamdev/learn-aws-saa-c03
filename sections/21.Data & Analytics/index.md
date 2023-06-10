@@ -99,3 +99,24 @@
 ### OpenSearch patterns Kinesis Data Streams & Kinesis Data Firehose
 
 ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/78eec671-4ac7-4c66-97a5-9573282dabbe/Untitled.png)
+
+## Amazon EMR
+
+- EMR stands for “Elastic MapReduce”
+- EMR helps creating **Hadoop Clusters (Big Data)** to analyze and process vast amount of data
+- The clusters can be made of hundreds of EC2 instaces
+- EMR comes bundled with Apache Spark, HBase, Presto, Flink…
+- EMR takes care of all the provisioning and configuration
+- Auto-scaling and integrated with Spot instances
+- **Use cases: data processing, machine learning, web indexing, big data…**
+
+### Node types & purchasing
+
+- **Mater Node**: Managed the cluster, coordinate, manage health - long running
+- **Core Node**: Run tasks and store data - long running
+- **Task Node (optional)**: Just to run tasks - usually Spot
+- **Purchasing options:**
+    - On-demand: reliable, predicable, won’t be terminated
+    - Reserved (min 1 year): cost savings (EMR will automatically use if available)
+    - Spot Instances: cheaper, can be terminated, less reliable
+- Can have long-running cluster, or transient (temporary) cluster

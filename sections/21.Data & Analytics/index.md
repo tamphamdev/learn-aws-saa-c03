@@ -176,6 +176,7 @@
 - **Glue DataBrew**: clean and normalize data using pre-built transformation
 - **Glue Studio**: new GUI to create, run and monitor ETL jobs in Glue
 - **Glue Streaming ETL** (built on Apache Spark Structured Streaming): compatible with Kinesis Data Streaming, Kafka, MSK (managed Kafka).
+
 ## AWS Lake Formation
 
 - **Data lake = central place to have all your data for analytics purposes**
@@ -188,6 +189,37 @@
 - Buit on top of AWS Glue
 
 ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/4d20c634-16cc-4583-b46d-d580b1509d9a/Untitled.png)
+
+## Kinesis Data Analytics for SQL applications
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/622556fb-8a14-492d-a671-246dc7410016/Untitled.png)
+
+### Kinesis Data Analytics (SQL application)
+
+- Real-time analytics on **Kinesis Data Streams & Firehose** using SQL
+- Add reference data from Amazon S3 to enrich streaming data
+- Fully managed, no servers to provision
+- Automatic scaling
+- Pay for actual consumption rate
+- Output:
+  - Kinesis Data Streams: create streams out of the real-time analytics queries
+  - Kinesis Data Firehose: send analytics query results to destinations
+- Use cases:
+  - Time-series analytics
+  - Real-time dashboards
+  - Real-time metrics
+
+### Kinesis Data Analytics for Apache Flink
+
+- Use Flink (Java, Scala or SQL) to process and analyze streaming data
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/d595fb65-19cd-4659-b4f9-f719131e961b/Untitled.png)
+
+- Run any Apache Flink application on a managed cluster on AWS
+  - Provisioning compute resources, parallel computation, automatic scaling
+  - application backups (implemented as checkpoints and snapshots)
+  - Use any Apache Flink programming features
+  - Flink does not read from Firehose (use Kinesis Analytics for SQL instead)
 
 ### AWS Lake Formation Centralized Permissions Example
 

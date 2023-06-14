@@ -255,7 +255,11 @@
 **Amazon MSK**
 
 - 1MB default, configure for higher (ex: 10MB)
-- Kaffa Topics with Partitions
+- Kafka Topics with Partitions
 - Can only add partitions to a topic
 - PLAINTEXT or TLS In-flight Encryption
 - KMS at-rest encryption
+
+### Amazon MSK Consumers
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3951dd95-c0b0-43fa-b1c5-1e80281d614b/Untitled.png)

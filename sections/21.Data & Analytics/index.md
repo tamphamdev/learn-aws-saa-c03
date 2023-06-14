@@ -9,17 +9,18 @@
 - Exam Tip: analyze data in S3 using serverless SQL, use Athena
 
 ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/bad79c6b-44c9-49b2-ac37-aa82c0ba8557/Untitled.png)
+
 ### Performance Improvement
 
 - Use **columnar data** for cost-savings (less scan)
-    - Apache Parquet or ORC is recommend
-    - Huge performance improvement
-    - Use Glue to convert your data to Parquet or ORC
+  - Apache Parquet or ORC is recommend
+  - Huge performance improvement
+  - Use Glue to convert your data to Parquet or ORC
 - **Compress data** for smaller retrievals (bzip2, gzip, lz4, snappy, zlip…)
 - **Partition** datasets in S3 for easy querying on virtual columns
-    - S3://yourBucket/pathToTable
-        - /<PARTITION_COLUMN_NAME> = <VALUE>
-    - Example: s3://athena-examples/flight/parquet/year=1991/month=1/day=1
+  - S3://yourBucket/pathToTable
+    - /<PARTITION_COLUMN_NAME> = <VALUE>
+  - Example: s3://athena-examples/flight/parquet/year=1991/month=1/day=1
 - **Use larger files** (>128 MB) to minimize overhead
 
 ### Federated Query
@@ -78,7 +79,7 @@
 
 ## Amazon OpenSearch Service
 
-- ***Amazon OpenSearch is successor to Amazon ElasticSearch***
+- **_Amazon OpenSearch is successor to Amazon ElasticSearch_**
 - In DynamoDB, queries only exist by primary key or indexes…
 - **With OpenSearch, you can search any field, even partially matches**
 - It’s common to use OpenSearch as a complement to another database
@@ -116,9 +117,9 @@
 - **Core Node**: Run tasks and store data - long running
 - **Task Node (optional)**: Just to run tasks - usually Spot
 - **Purchasing options:**
-    - On-demand: reliable, predicable, won’t be terminated
-    - Reserved (min 1 year): cost savings (EMR will automatically use if available)
-    - Spot Instances: cheaper, can be terminated, less reliable
+  - On-demand: reliable, predicable, won’t be terminated
+  - Reserved (min 1 year): cost savings (EMR will automatically use if available)
+  - Spot Instances: cheaper, can be terminated, less reliable
 - Can have long-running cluster, or transient (temporary) cluster
 
 ## Amazon QuickSight
@@ -126,10 +127,10 @@
 - **Serverless machine learing-powered business intelligence service to create interactive dashboards**
 - Fast, automatically scalable, embeddable, with per-session pricing
 - Use cases:
-    - Business analytics
-    - Building visualizations
-    - Perform ad-hoc analysis
-    - Get business insights using data
+  - Business analytics
+  - Building visualizations
+  - Perform ad-hoc analysis
+  - Get business insights using data
 - Integrated with RDS, Aurora, Athena, Redshift, S3…
 - **In-memory computation using SPICE** engine if data is imported into QuickSight
 - Enterprise edition: Possibility to setup **Column-Level security (CLS)**
@@ -141,10 +142,37 @@
 ### Dashboard & Analysis
 
 - Define Users (standard versions) and Groups (enterprise version)
-    - These users & groups only exist within QuickSight, not IAM!!
-- A *dashboard*…
-    - is a read-only snapshot of an analysis that you can share
-    - preserves the configuration of the analysis (filtering, parameters, controls, sort)
+  - These users & groups only exist within QuickSight, not IAM!!
+- A _dashboard_…
+  - is a read-only snapshot of an analysis that you can share
+  - preserves the configuration of the analysis (filtering, parameters, controls, sort)
 - **You can share the analysis or the dashboard with Users or Groups**
 - To share a dashboard, you must first publish it
 - Users who see the dashboard can also see the underlying data
+
+## AWS Glue
+
+- Managed **extract, transform, and load (ETL)** service
+- Useful to prepare and transform data for analytics
+- Fully serverless service
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/31d63caa-5e49-41ee-9202-15a6b03e3a61/Untitled.png)
+
+### Convert data into Parquet format
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/489eedcd-fca5-4951-85f1-42050d181bd6/Untitled.png)
+
+### Glue Data Catalog: catalog of datasets
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/eb5fdd6c-eef2-4f3f-8d06-2bcf2b788aa5/Untitled.png)
+
+### Glue - things to know at a high-level
+
+- **Glue Job Bookmarks**: prevent re-processing old data
+- **Glue Elastic Views**:
+  - Combine and replicate data across multiple data stores using SQL
+  - No custom code, Glue monitors for changes in the source data, serverless
+  - Leverages a “virtual table” (materialized view)
+- **Glue DataBrew**: clean and normalize data using pre-built transformation
+- **Glue Studio**: new GUI to create, run and monitor ETL jobs in Glue
+- **Glue Streaming ETL** (built on Apache Spark Structured Streaming): compatible with Kinesis Data Streaming, Kafka, MSK (managed Kafka)

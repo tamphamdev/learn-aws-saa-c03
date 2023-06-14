@@ -224,3 +224,38 @@
 ### AWS Lake Formation Centralized Permissions Example
 
 ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/845a54cd-0e9c-41d8-bc91-0c303d007f2a/Untitled.png)
+
+## Amazon Managed Streaming for Apache Kafka (Amazon MSK)
+
+- Alternative to Amazon Kinesis
+- Fully managed Apache Kafka on AWS
+  - Allow you to create, update, delete clusters
+  - MSK creates & manageds Kafka brokers nodes & Zookeeper nodes for you
+  - Deploy the MSK cluster in your VPC, multi-AZ (up to 3 for HA)
+  - Automatic recovery from common Apache Kafka failures
+  - Data is stored on EBS volumes **for as long as you want**
+- **MSK Serverless**
+  - Run Apache Kafka on MSK without managing the capacity
+  - MSK automatically provisions resources and scales compute & storage
+
+### Apache Kafka at a high level
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3e76b643-fc84-476e-96d8-2282a4e4d83b/Untitled.png)
+
+### Kinesis Data Streams vs Amazon MSK
+
+**Kinesis Data Streams**
+
+- 1MB message size limit
+- Data streams with Shards
+- Shard Splitting & Merging
+- TLS In-flight encryption
+- KMS at-rest encryption
+
+**Amazon MSK**
+
+- 1MB default, configure for higher (ex: 10MB)
+- Kaffa Topics with Partitions
+- Can only add partitions to a topic
+- PLAINTEXT or TLS In-flight Encryption
+- KMS at-rest encryption

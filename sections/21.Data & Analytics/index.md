@@ -175,4 +175,4 @@
   - Leverages a “virtual table” (materialized view)
 - **Glue DataBrew**: clean and normalize data using pre-built transformation
 - **Glue Studio**: new GUI to create, run and monitor ETL jobs in Glue
-- **Glue Streaming ETL** (built on Apache Spark Structured Streaming): compatible with Kinesis Data Streaming, Kafka, MSK (managed Kafka)
+- **Glue Streaming ETL** (built on Apache Spark Structured Streaming): compatible with Kinesis Data Streaming, Kafka, MSK (managed Kafka).

@@ -98,3 +98,13 @@
 - Use case: Product Demand Planning, Financial Planing, Resource Planning…
 
 ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8794f0d2-4cdf-4bf8-bd9e-a35b18ff97eb/Untitled.png)
+
+## Amazon Kendra
+
+- Fully managed **document search service** powered by Machine Learning
+- Extract answers from within a document (text, pdf, HTML, PowerPoint, MS Word, FAQs…)
+- Natural language search capabilities
+- Learn from user interactions/feedback to promote perferred results **(Incremental Learning)**
+- Ability to manually fine-tune search results (importance of data, freshness, custom…)
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/4025993d-156c-4439-951e-acaee647aa8f/Untitled.png)

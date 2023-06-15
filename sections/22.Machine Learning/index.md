@@ -108,3 +108,16 @@
 - Ability to manually fine-tune search results (importance of data, freshness, custom…)
 
 ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/4025993d-156c-4439-951e-acaee647aa8f/Untitled.png)
+
+## Amazon Textract
+
+- Automatically extracts text, handwriting, and data from any scanned documents using AL and ML
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/583fa37d-9f7c-45ff-a777-1fe9ff6acadd/Untitled.png)
+
+- Extract data from forms and tables
+- Read and process any type of document (PDFs, images…)
+- Use cases:
+    - Financial Services (eg: invoices, financial reports)
+    - Healthcare (eg: medical records, insurance claims)
+    - Public Sector (eg: tax forms, ID documents, passports)

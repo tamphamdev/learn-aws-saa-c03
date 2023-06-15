@@ -88,3 +88,13 @@
 - Machine learning process (simplified): predicting your exam score
 
 ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/6c77497c-8d1e-480b-b9a1-d3dadc736e9b/Untitled.png)
+
+## Amazon Forecast
+
+- Fully managed service that uses ML to deliver highly accurate forecasts
+- Example: predict the future sales of a raincoat
+- 50% more accurate than looking at the data itself
+- Reduce forecasting time from months to hours
+- Use case: Product Demand Planning, Financial Planing, Resource Planning…
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8794f0d2-4cdf-4bf8-bd9e-a35b18ff97eb/Untitled.png)

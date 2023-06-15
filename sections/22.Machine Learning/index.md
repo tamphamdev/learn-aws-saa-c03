@@ -51,3 +51,8 @@
     - using phonetic pronunciation
     - including breathing sounds, whispering
     - using the Newscaster speaking style
+
+## Amazon Translate
+
+- Natural and accurate language translation
+- Amazon Translate allows you to localize content - such as websites and applications - for international users, and to easily translate large volume of text efficiently

@@ -83,3 +83,12 @@
 - **Cross-Account Subscription** - send log events to resources in a different AWS account (KDS, KDF)
 
 ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a43bcfb1-5e5f-41df-91b8-4d693203db82/Untitled.png)
+
+### CloudWatch Logs for EC2
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/d4df4ca0-39a6-4fed-886d-5ce8526df298/Untitled.png)
+
+- By default, no logs from your EC2 machine will go to CloudWatch
+- You need to run a CloudWatch agent on Ec2 to push the logs files you want
+- Make sure IAM permissions are correct
+- The CloudWatch log agent can be setup on-premises too

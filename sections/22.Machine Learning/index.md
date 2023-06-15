@@ -79,4 +79,12 @@
     - Test results
     - Case notes
 - Uses NLP to detect Protected Health Information (PHI) - DetechPHI API
-- Store your documents in Amazon S3, analyze real-time data with Kinesis Data Firehose, or use Amazon Transcribe to transcribe patient narratives into text that can be analyzed by Amazon Comprehend Mediacal
+- Store your documents in Amazon S3, analyze real-time data with Kinesis Data Firehose, or use Amazon Transcribe to transcribe patient narratives into text that can be analyzed by Amazon Comprehend Medical
+
+## Amazon SageMaker
+
+- Fully managed service for developers / data scientists to build ML models
+- Typically, difficult to do all the processes in one place + provision servers
+- Machine learning process (simplified): predicting your exam score
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/6c77497c-8d1e-480b-b9a1-d3dadc736e9b/Untitled.png)

@@ -279,3 +279,89 @@
 ### Amazon EventBridge + CloudTrail
 
 ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3e6f4fb9-06c5-47dc-95a4-ec1eb3deede6/Untitled.png)
+
+## AWS Config
+
+- Helps with auditing and recording **compliance** of your AWS resources
+- Helps record configurations and changes over time
+- Questions that can be solved by AWS Config:
+    - Is there unrestricted SSH access to my security groups?
+    - Do my buckets have any public access?
+    - How has my ALB configuration changed over time?
+- You can receive alerts (SNS notifications) for any changes
+- AWS Config is a per-region service
+- Can be aggregated across regions and accounts
+- Possibility of storing the configuration data into S3 (analyzed by Athena)
+
+### Config Rules
+
+- Can use AWS managed config rules (over 75)
+- Can make custom config rules (must be defined in AWS Lambda)
+    - Ex: evaluate if each EBS disk is of type gp2
+    - Ex: evaluate if each EC2 instance is t2.micro
+- Rules can be evaluated / triggered
+    - Fore each config change
+    - And / or : at regular time intervals
+- **AWS Config Rules does not prevent actions from happening (no deny)**
+- Pricing: no free tier, $0.003 per configuration item recorded per region, $0.001 per config rule evaluation per region
+
+### AWS Config Resource
+
+- View compliance of a resource over time
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a383a822-3c05-44c1-a227-2ecac91d5198/Untitled.png)
+
+- View configuration of a resource over time
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/56673375-2552-451f-af8c-f82d783c3499/Untitled.png)
+
+- View CloudTrail API calls of a resource over time
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/87f3bccb-babd-4a67-b426-7b4a8e4230c8/Untitled.png)
+
+### Config Rules - Remediations
+
+- Automate remediation of non-compliant resources using SSM Automation Documents
+- Use AWS-Managed Automation Documents or create custom Automation Documents
+    - Tip: you can create custom Automation Documents that invokes Lambda function
+- You can set **Remediation Retries** if the resource is still non-compliant after auto-remediation
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/1f8cb48f-277b-4640-8781-37b90f46499c/Untitled.png)
+
+### Config Rules - Notifications
+
+- Use EventBridge to trigger notifications when AWS resources are non-compliant
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/9868d465-18e6-4b0c-956a-b407e4e81b12/Untitled.png)
+
+- Ability to send configuration changes and compliance state notifications to SNS (all events - use SNS Filtering or filter at client-side)
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/78df756c-590a-41cf-a4dd-4711c404131a/Untitled.png)
+
+## Summary
+
+- CloudWatch
+    - Performance monitoring (metrics, CPU, network, etc…) & dashboards
+    - Events & Alerting
+    - Log Aggregation & Analytics
+- CloudTrail
+    - Record API calls made within your Account by everyone
+    - Can define trails for specific resources
+    - Global services
+- Config
+    - Record configuration changes
+    - Evaluate resources against compliance rules
+    - Get timeline of changes and compliance
+
+### For an Elastic Load Balancer
+
+- CloudWatch:
+    - Monitoring Incoming connections metric
+    - Visualize error codes as % over time
+    - Make a dashboard to get an idea of your load balancer performance
+- Config:
+    - Track security group rules for the Load Balancer
+    - Track configuration changes for the Load Balancer
+    - Ensure an SSL certificate is always assigned to the Load Balancer (compliance)
+- CloudTrail:
+    - Track who made any changes to the Load Balancer with API calls

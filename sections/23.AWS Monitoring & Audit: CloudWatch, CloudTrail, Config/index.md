@@ -208,7 +208,7 @@
 ### CloudWatch Insights and Operational Visibility
 
 - **CloudWatch Container Insights**
-    - ECS, EKS, Kubernetes on EC2, Farget, need agent for Kubernetes
+    - ECS, EKS, Kubernetes on EC2, Fargate, need agent for Kubernetes
     - Metrics and logs
 - **CloudWatch Lambda Insights**
     - Detailed metrics to troubleshoot serverless applications
@@ -216,3 +216,58 @@
     - Find “Top-N” Contributor through CloudWatch Logs
 - **CloudWatch Application Insights**
     - Automatic dashboard to troubleshoot your application and related AWS services
+
+## AWS CloudTrail
+
+- **Provides governance, compliance and audit for your AWS Account**
+- CloudTrail is enabled by default
+- **Get an history of events / API calls made within your AWS Account** by:
+    - Console
+    - SDK
+    - CLI
+    - AWS Services
+- Can put logs from CloudTrail into CloudWatch Logs or S3
+- **A trail can be applied to All Regions (default) or a single Region**
+- If a resource is deleted in AWS, investigate CloudTrail first !
+
+### CloudTrail Diagram
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/aa8de334-b443-4863-b588-ce93471160bf/Untitled.png)
+
+### CloudTrail Events
+
+- **Management Events:**
+    - Operations that are performed on resources in your AWS account
+    - Examples:
+        - Configuring security (IAM **AttachRolePolicy**)
+        - Configuring rules for routing data (Amazon Ec2 **CreateSubNet**)
+        - Setting up logging (AWS CloudTrail **CreateTrail**)
+    - **By default, trails are configured to log management events**
+    - Can separate **Read Events** (that don’t modify resources) from **Write Events** (that may modify resources)
+- **Data Events:**
+    - By default, data events are not logged (because high volume operations)
+    - Amazon S3 object-level activity (ex: **GetObject**, **DeleteObject**, **PutObject**): can separate Read and Write Events
+    - AWS Lambda function execution activity (the **Invoke** API)
+- **CloudTrail Insights Events**
+
+### CloudTrail Insights
+
+- Enable CloudTrail Insights to detect unusual activity in your account:
+    - inaccurate resource provisioning
+    - hitting service limits
+    - Bursts of AWS IAM actions
+    - Gaps in periodic maintenance activity
+- CloudTrail Insights analyzes normal management events to create a baseline
+- And then continuously analyzes write events to detect unusual patterns
+    - Anomalies appear in the CloudTrail console
+    - Event is sent to Amazon S3
+    - An EventBridge event is generated (for automation needs)
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/1634118c-1cf5-44a2-bf29-abe84f5f0cf2/Untitled.png)
+
+### CloudTrail Events Retention
+
+- Events are stored for 90 days in CloudTrail
+- To keep events beyond this period, log them to S3 and use Athena
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/b4c9e72a-4873-41df-a9d8-805d1a34c917/Untitled.png)

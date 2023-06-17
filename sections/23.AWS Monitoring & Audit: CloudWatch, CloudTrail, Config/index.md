@@ -161,3 +161,58 @@
 ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/2f7339ee-9649-412e-8282-e1380893a8f1/Untitled.png)
 
 - To test alarms and notifications, set the alarm state to Alarm using CLI
+
+### CloudWatch Container Insights
+
+- Collect, aggregate, summarize, **metrics and logs** from containers
+- Available for container on..
+    - Amazon Elastic Containers Service (Amazon ECS)
+    - Amazon Elastic Kubernetes Services (Amazon EKS)
+    - Kubernetes platforms on EC2
+    - Fargate (both for ECS and EKS)
+- **In Amazon EKS and Kubernetes, CloudWatch Insights is using a containerized version of the CloudWatch Agent to discover containers**
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/efe0a94d-d9a3-4483-8c8d-3db993a90576/Untitled.png)
+
+### CloudWatch Lambda Insights
+
+- Monitoring and troubleshooting solution for serverless applications running on AWS Lambda
+- Collect, aggregates, and summarizes system-level metrics including CPI time, memory, disk and network
+- Collects, aggregates, and summarizes diagnostic information such as cold starts and Lambda worker shutdowns
+- Lambda Insights is provided as a Lambda Layer
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/afbb298f-ac55-42fe-81fe-286ea187989b/Untitled.png)
+
+### CloudWatch Contributor Insights
+
+- Analyze log data and create time series that display contributor data
+    - **See metrics about the top-N contributors**
+    - The total number of unique contributor, and their usage.
+- This helps you find top talkers and understand who or what is impacting system performance
+- Works for any AWS-generated logs (VPC, DNS, etc…)
+- For example,  you can find bad hosts, **identify the heaviest network users**, or find the URLs that generate the most errors
+- You can build your rules from scratch, or you can also use sample rules that AWS has created - **leverages your CloudWatch Logs**
+- CloudWatch also provides built-in rules that you can use to analyze metrics from other AWS services.
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/eee48a62-4249-4c33-8fb9-1b92c0e6e991/Untitled.png)
+
+### CloudWatch Application Insights
+
+- **Provides automated dashboards that show potential problems with monitored applications, to help isolate ongoing issues**
+- Your applications run on Amazon EC2 Instances with select technologies only (Java, .NET, databases….)
+- And you can use other AWS resources such as Amazon EBS, RDS, ELB, ASG, Lambda, SQS, DynamoDB, S3 bucket, ECS, EKS, SNS, API Gateway…
+- Powered by SageMaker
+- Enhanced visibility into your application health to reduce the time it will take you to troubleshoot and repair your applications
+- Findings and alerts are sent to Amazon EventBridge and SSM OpsCenter
+
+### CloudWatch Insights and Operational Visibility
+
+- **CloudWatch Container Insights**
+    - ECS, EKS, Kubernetes on EC2, Farget, need agent for Kubernetes
+    - Metrics and logs
+- **CloudWatch Lambda Insights**
+    - Detailed metrics to troubleshoot serverless applications
+- **CloudWatch Contributors Insights**
+    - Find “Top-N” Contributor through CloudWatch Logs
+- **CloudWatch Application Insights**
+    - Automatic dashboard to troubleshoot your application and related AWS services

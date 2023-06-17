@@ -271,3 +271,11 @@
 - To keep events beyond this period, log them to S3 and use Athena
 
 ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/b4c9e72a-4873-41df-a9d8-805d1a34c917/Untitled.png)
+
+### Amazon EventBridge - Intercept API Calls
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/6ba6b027-a727-408b-bfe3-6c3fa0d65f28/Untitled.png)
+
+### Amazon EventBridge + CloudTrail
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3e6f4fb9-06c5-47dc-95a4-ec1eb3deede6/Untitled.png)

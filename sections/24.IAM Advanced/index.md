@@ -47,3 +47,23 @@
 ### Resource Policies & aws:PrincipalOrgID
 
 - **aws:PrincipalOrgID** can be used in any resources policies to restrict access to accounts that are member of an AWS Organization
+
+### IAM Roles vs Resource Based Policies
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/157875b9-a48d-46d7-ae1b-6104186710e5/Untitled.png)
+
+- Cross account:
+    - Attaching a resource-based policy to a resource (example: S3 bucket policy)
+    - OR using a role as a proxy
+- **When you assume a role (user, application or service), you give up your original permissions and take the permissions assigned to the role**
+- When using a resource-base policy, the principal doesn’t have to give up his permissions
+- Example: User in account A needs to scan a DynamoDB table in Account a and dump it in an S3 bucket in Account B
+- Supported by: Amazon S3 buckets, SNS topics, SQS queues, etc..
+
+### Amazon EventBridge - Security
+
+- When a rule runs, it needs permissions on the target
+- **Resource-based policy: Lambda, SNS, SQS, CloudWatch Logs, API Gateway…**
+- I**AM role: Kinesis stream, System Manager Run Command, ECS task**
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f61cbb22-1651-40db-b24a-ac8e8bfb7b47/Untitled.png)

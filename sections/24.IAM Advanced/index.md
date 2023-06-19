@@ -127,3 +127,40 @@
   - Fine-grained permissions based on users’s atttributes stored in IAM Identity Center Identity Store
   - Example: cost center, title, locale…
   - Use case: Define permissions once, then modify AWS access by changing the attributes
+
+## AWS Microsoft Active Directory
+
+- Found on any Windows Server with AD Domain Services
+- Database of **objects**: User Account, Computers , Printers, File Shares, Security Groups
+- Centralized security management, create account, assign permissions
+- Object are organized in **trees**
+- A group of trees is a **forest**
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/6e4dfce3-8815-4cd1-ab3a-1aea079b2419/Untitled.png)
+
+### AWS Directory Services
+
+- **AWS Managed Microsoft AD**
+  - Create your own AD in AWS, manage users locally, supports MFA
+  - Establish “trust” connections with your on-premises AD
+- **AD Connector**
+  - Directory Gateway (proxy) to redirect to on-premises AD, support MFA
+  - Users are managed on the on-premises AD
+- **Simple AD**
+
+  - AD-compatible managed directory on AWS
+  - Cannot be joined with on-premises AD
+
+  ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8f9bce00-6f21-42f2-8435-963584a65a58/Untitled.png)
+
+### IAM Identity Center - Active Directory Setup
+
+- Connect to an AWS Managed Microsoft AD (Directory Service)
+
+  - Intergration is out of the box
+
+  ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/7c4aec30-ae7a-4dd9-bed7-2e8898cc6d06/Untitled.png)
+
+- Connect to a Self-Managed Directory
+  - Create Two-way Trust Relationship using AWS Managed Microsoft AD
+  - Create an AD Connector

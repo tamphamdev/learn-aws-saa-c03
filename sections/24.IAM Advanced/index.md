@@ -93,3 +93,37 @@
 - Can you perform sqs:CreateQueue? ⇒ No ⇒ Because explicit Deny
 - Can you perform sqs:DeleteQueue? ⇒ No ⇒ Because explicit Deny
 - Can you perform ec2:DescribeInstances? ⇒ No ⇒ Because no explicit Deny also no explicit Allow
+
+## AWS IAM Identity Center (successor to AWS SSO)
+
+- One login (single sign-on) for all your
+  - **AWS accounts in AWS Organizations**
+  - Business cloud applications (e.g: Saleforce, Box, Microsoft 365…)
+  - SAML2.0-enabled applications
+  - EC2 Window Instances
+- Identity providers
+  - Built-in identity store in IAM Identity Center
+  - 3rd party: Active Directory (AD), OneLogin, Okta…
+
+### AWS IAM Identity Center - Login Flow
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/2b8f560f-7166-4564-acc7-a15d0da32d34/Untitled.png)
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c4cc25e7-9fca-4d18-b8c4-0037910906e8/Untitled.png)
+
+### IAM Identity Center
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/475d8f86-d249-4aa0-bf2a-a54a926f8411/Untitled.png)
+
+### AWS IAM Identity Center Fine-grained Permissions and Assignments
+
+- **Multi-Account Permissions**
+  - Manage access across AWS accounts in your AWS Organization
+  - Permission Sets - a collection of one or more IAM Policies assigned to users and groups to define AWS access
+- **Application Assignments**
+  - SSO access to many SAML 2.0 business applications (Salesforce, Box, MS 365…)
+  - Provide required URLS, certificates, and metadata
+- **Attribute-Based Access Control (ABAC)**
+  - Fine-grained permissions based on users’s atttributes stored in IAM Identity Center Identity Store
+  - Example: cost center, title, locale…
+  - Use case: Define permissions once, then modify AWS access by changing the attributes

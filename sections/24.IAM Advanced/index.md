@@ -15,24 +15,24 @@
 ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/d7d02115-9ea7-4e78-a29a-1e99bfa71023/Untitled.png)
 
 - **Advantages**
-    - Multi Account vs One Account Multi VPC
-    - Use tagging standards for billing purposes
-    - Enable CloudTrail on all accounts, send logs to central S3 account
-    - Send CloudWatch Logs to central logging account
-    - Establish Cross Account Roles for Admin purposes
+  - Multi Account vs One Account Multi VPC
+  - Use tagging standards for billing purposes
+  - Enable CloudTrail on all accounts, send logs to central S3 account
+  - Send CloudWatch Logs to central logging account
+  - Establish Cross Account Roles for Admin purposes
 - **Security: Service Control Policies (SCP)**
-    - IAM policies applied to OU or Accounts to restrict Users and Roles
-    - They do not apply to the management account (full admin power)
-    - Must have an explicit allow (does not allow anything by default - like IAM)
 
-    ### SCP Hierarchy
+  - IAM policies applied to OU or Accounts to restrict Users and Roles
+  - They do not apply to the management account (full admin power)
+  - Must have an explicit allow (does not allow anything by default - like IAM)
 
-    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e1aa7fa7-21f8-428b-b263-6f1938bf5b69/Untitled.png)
+  ### SCP Hierarchy
 
-    ### SCP Examples Blocklist and Allowlist strategies
+  ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e1aa7fa7-21f8-428b-b263-6f1938bf5b69/Untitled.png)
 
-    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/700d43e2-99ac-4388-b949-91980d05cb40/Untitled.png)
+  ### SCP Examples Blocklist and Allowlist strategies
 
+  ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/700d43e2-99ac-4388-b949-91980d05cb40/Untitled.png)
 
 ## IAM Conditions
 
@@ -53,8 +53,8 @@
 ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/157875b9-a48d-46d7-ae1b-6104186710e5/Untitled.png)
 
 - Cross account:
-    - Attaching a resource-based policy to a resource (example: S3 bucket policy)
-    - OR using a role as a proxy
+  - Attaching a resource-based policy to a resource (example: S3 bucket policy)
+  - OR using a role as a proxy
 - **When you assume a role (user, application or service), you give up your original permissions and take the permissions assigned to the role**
 - When using a resource-base policy, the principal doesn’t have to give up his permissions
 - Example: User in account A needs to scan a DynamoDB table in Account a and dump it in an S3 bucket in Account B
@@ -67,3 +67,29 @@
 - I**AM role: Kinesis stream, System Manager Run Command, ECS task**
 
 ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f61cbb22-1651-40db-b24a-ac8e8bfb7b47/Untitled.png)
+
+### IAM Permission Boundaries
+
+- IAM Permission Boundaries are supported for users and roles (not groups)
+- Advanced feature to use a managed policy to set the maximum permissions an IAM entity can get
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/4a451f7d-536b-4eff-94c3-6650d679c599/Untitled.png)
+
+- Can be used in combinations of AWS Organizations SCP
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/44bc4580-9b6a-4274-ae81-11eddd79a127/Untitled.png)
+
+- Use cases:
+  - Delegate responsibilities to non administrators within their permission boundaries, for example create new IAM users.
+  - Allow developers to self-assign policies and manage their own permissions, while make sure they can’t “escalate” their privileges (= make themselves admin)
+  - Useful to restrict one specific user (instead of a whole account using Organizations & SCP)
+
+### IAM Policy Evaluation Logic
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/90393f8a-fb88-4933-a48c-4e191b8c06cf/Untitled.png)
+
+### Example IAM Policy
+
+- Can you perform sqs:CreateQueue? ⇒ No ⇒ Because explicit Deny
+- Can you perform sqs:DeleteQueue? ⇒ No ⇒ Because explicit Deny
+- Can you perform ec2:DescribeInstances? ⇒ No ⇒ Because no explicit Deny also no explicit Allow

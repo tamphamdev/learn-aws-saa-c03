@@ -164,3 +164,21 @@
 - Connect to a Self-Managed Directory
   - Create Two-way Trust Relationship using AWS Managed Microsoft AD
   - Create an AD Connector
+
+## AWS Control Tower
+
+- Easy way to **set up and govern a secure and compliant multi-account AWS environment** based on best practices
+- AWS Control Tower uses AWS organizations to create accounts
+- Benefits:
+  - Automate the set up of your environment in a few clicks
+  - Automate ongoing policy management using guardrails
+  - Detect polcy violations and remediate theme
+  - Monitor compliance through an interactive dashboard
+
+### AWS Control Tower - Guardrails
+
+- Provides ongoing governance for your Control Tower environment (AWS Accounts)
+- **Preventive Guardrail - using SCPs** (eg: Restrict Regions across all your accounts)
+- **Detective Guardrail - using AWS Config** (eg: identify untagged resources)
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/469dae20-97c4-40c5-b524-a83975cc85ec/Untitled.png)

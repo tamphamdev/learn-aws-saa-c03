@@ -134,3 +134,40 @@ KMS, Encryption SDK, SSM Parameter Store
   - An IAM Role with KMS: Decrypt for the source KMS Key KMS: Encrypt for the target KMS Key
   - You might get KMS throtting errors, in which case you can ask for a Service Quotas increase
 - **You can use mutli-region AWS KMS Keys, but they are currently treated as independent keys by Amazon S3 (the object will still be decrypted and then encrypted)**
+
+### AMI Sharing Process Encrypted via KMS
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e644bdfa-7e0e-428c-abff-73757e3e1b0c/Untitled.png)
+
+1. AMI in Source Account is encrypted with KMS Key form Source Account
+2. Must modify the image attribute to add a **Launch Permission** which corresponds to the specified target AWS account
+3. Must share the KMS Keys used to encrypted the snapshot the AMI references with the target account / IAM Role
+4. The IAM Role/User in the target account must have the permissions to DescribeKey, ReEncrypted, CreateGrant, Decrypt
+5. When launching an EC2 instance from the AMI, optionally the target account can specify a new KMS key in its own account to re-encrypt the volumes
+
+## SSM Parameter Store
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/6e65a9f2-5b1e-4334-9dc0-2c8523504c1a/Untitled.png)
+
+- Secure storage for configuration and secrets
+- Optional Seamless Encryption using KMS
+- Serverless, scalable, durable, easy SDK
+- Version tracking of configurations / secrets
+- Security through IAM
+- Notifications with Amazon EventBridge
+- Integration with CloudFormation
+
+### SSM Parameter Store Hierarchy
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/1db1857a-913b-4729-b5d4-a54c5766877b/Untitled.png)
+
+### Standard and advanced parameter tiers
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ec3da04d-6a2f-46a7-93e7-f727f1aca30f/Untitled.png)
+
+### Parameters Policies (for advanced parameters)
+
+- Allow to assign a TTL to a parameter (expiration data) to force updating or deleting sensitive data such as passwords
+- Can assign multiple policies at a time
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/39273c5e-996b-4c00-a283-8e96119a01c5/Untitled.png)

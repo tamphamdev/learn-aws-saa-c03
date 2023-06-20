@@ -94,3 +94,32 @@ KMS, Encryption SDK, SSM Parameter Store
 5. Create a volume from the snapshot
 
 ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/91330eae-043a-4ea5-82b7-71a1011b8073/Untitled.png)
+
+### KMS Multi-Region Keys
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a5ccc2a3-0442-401a-b3cf-f8223e0af028/Untitled.png)
+
+- Identical KMS keys in different AWS Regions that can be used interchangeably
+- Multi-Region keys have the same key ID, key material, automatic rotation…
+- Encrypt in one Region and decrypt in other Regions
+- No need to re-encrypt or making cross-Region API calls
+- KMS Multi-Region are NOT global (Primary + Replicas)
+- Each Multi-Region key is managed **independently**
+- Use casses: global client-side encryption, encryption on Global DynamoDB, Global Aurora
+
+### Dynamo Global Tables and KMS Multi-Region Keys Client-Side encryption
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/18a171f8-a96d-4c24-92a9-39cefca6c145/Untitled.png)
+
+- We can encrypt specific attributes client-side in our DynamoDB table using the **Amazon DynamoDB Encryption Client**
+- Combined with Global Tables, the client-side encrypted data is replicated to other regions
+- If we use a multi-region key, replicated in the same region as the DynamoDB Global table, then clients in these regions can use low-latency API calls to KMS in their region to decrypt the data client-side
+- Using client-side encryption we can protect specific fields and guarantee only decryption if the client has access to an API key
+
+### Global Aurora and KMS Multi-Region Keys Client-Side encryption
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/696bc2e8-b9a7-4fb4-94ec-3d4af62119d8/Untitled.png)
+
+- We can encrypt specific attributes client-side in our Aurora table using the **AWS Encryption SDK**
+- Combined with Aurora Global Tables, the client-side encrypted data is replicated to other regions
+- If we use a multi-region key, replicated in the same regions as the Global Aurora DB, then clients in these regions can use low-latency API calls to KMS in their region to decrypt the data client-side

@@ -123,3 +123,14 @@ KMS, Encryption SDK, SSM Parameter Store
 - We can encrypt specific attributes client-side in our Aurora table using the **AWS Encryption SDK**
 - Combined with Aurora Global Tables, the client-side encrypted data is replicated to other regions
 - If we use a multi-region key, replicated in the same regions as the Global Aurora DB, then clients in these regions can use low-latency API calls to KMS in their region to decrypt the data client-side
+
+### S3 Replication Encryption Considerations
+
+- **Unencrypted object and object encrypted with SSE-S3 are replicated by default**
+- Objects encrypted with SSE-C (customter provided key) are never replicated
+- **For objects encrypted with SSE-KMS**, you need to enable the option
+  - Specify which KMS Kye to encrypt the objects within the target bucket
+  - Adapt the KMS Key Policy for the target key
+  - An IAM Role with KMS: Decrypt for the source KMS Key KMS: Encrypt for the target KMS Key
+  - You might get KMS throtting errors, in which case you can ask for a Service Quotas increase
+- **You can use mutli-region AWS KMS Keys, but they are currently treated as independent keys by Amazon S3 (the object will still be decrypted and then encrypted)**

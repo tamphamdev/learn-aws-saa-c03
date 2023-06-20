@@ -171,3 +171,21 @@ KMS, Encryption SDK, SSM Parameter Store
 - Can assign multiple policies at a time
 
 ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/39273c5e-996b-4c00-a283-8e96119a01c5/Untitled.png)
+
+## AWS Secrets Manager
+
+- Newer service, meant for storing secrets
+- Capability to force **rotation of secrets** every X days
+- Automate generation of secrets on rotation (uses Lambda)
+- Integration with **Amazon RDS** (MySQL, PostgreSQL, Aurora)
+- Secrets are encrypted using KMS
+- Mostly meant for RDS integration
+
+### Multi-Region Secrets
+
+- Replicate Secrets across multiple AWS Regions
+- Secrets Manager keeps read replicas in sync with the primary Secret
+- Ability to promote a read replica Secret to a standalone Secret
+- Use cases: multi-region apps, disaster recovery strategies, multi-region DB…
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a904b718-87f3-4c86-9dd6-51aff6580890/Untitled.png)

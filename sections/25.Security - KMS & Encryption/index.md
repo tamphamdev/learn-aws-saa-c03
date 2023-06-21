@@ -377,3 +377,21 @@ KMS, Encryption SDK, SSM Parameter Store
   - WAF + API Gateway: burst limits, headers filtering, use API keys
 
   ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f36873d4-ca55-46d4-9ced-0712bbc831d9/Untitled.png)
+
+## Amazon GuardDuty
+
+- Intelligent Threat discovery to protect your AWS Account
+- Uses Machine Learning algorithms, anomaly detection, 3rd party data
+- One click to enable (30 days trial), no need to install software
+- Input data includes:
+  - **CloudTrail Events Logs** - unusual API calls, unauthorized deployments
+    - **CloudTrail Management Events** - create VPC subnet, create trail…
+    - **CloudTrail S3 Data Events** - get object, list objects, delete object…
+  - **VPC Flow Logs** - unusual internal traffic, unusual IP address
+  - **DNS Logs** - compromised EC2 instances sending encoded data within DNS queries
+  - **Kubernetes Audit Logs** - suspicious activities and potential EKS cluster compromises
+- Can setup **EventBridge** rules to be notified in case of finding
+- EventBridge rules can target AWS Lambda or SNS
+- **Can protect against CryptoCurrency attacks (has a dedicated “finding” for it)**
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/6e0c10de-d247-4752-b56b-79d7233395bd/Untitled.png)

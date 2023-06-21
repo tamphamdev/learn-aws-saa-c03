@@ -418,3 +418,10 @@ KMS, Encryption SDK, SSM Parameter Store
 - Package vulnerabilities (EC2, ECR & Lambda) - database of CVE
 - Network reachability (EC2)
 - A risk score is assosicated with all vulnerabilities for prioritization
+
+## AWS Macie
+
+- Amazon Macie is a fully managed data security and data privacy service that uses **machine learning and pattern matching to discover and protect your sensitive data in AWS**
+- Macie helps indentify and alert you to **sensitive data, such as personally identifiable information (PII)**
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/525a77a3-263f-4347-84cb-7b04d8f128c2/Untitled.png)

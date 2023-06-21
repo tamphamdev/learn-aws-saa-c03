@@ -258,3 +258,28 @@ KMS, Encryption SDK, SSM Parameter Store
   - For clients within the same region
   - **The TLS Cerificate must be imported on API gateway, in the same region as the API Stage**
   - Then setup CNAME or (better) A-Alias record in Route 53
+
+## AWS WAF - Web Application Firewall
+
+- Protects your web applications from common web exploits (Layer 7)
+- **Layer 7 is HTTP** (vs Layer 4 is TCP/UDP)
+- Deploy on
+  - **Application Load Balancer**
+  - **API Gateway**
+  - **CloudFront**
+  - **AppSync GraphQL API**
+  - **Cognito User Pool**
+- Define Web ACL (Web Access Control List) Rules:
+  - **IP Set: up to 10,000 IP Addresses** - use multiple Rules for more IPs
+  - HTTP headers, HTTP body, or URI strings Protects from common attack - **SQL injection** and **Cross-Site-Scripting (XSS)**
+  - Size constraints, **geo-match (block countries)**
+  - **Rate-based rules** (to count occurrences of events) - **for DDoS protection**
+- Web ACL are Regional except for CloudFront
+- A rule group is a **reusable set of rules that you can add to a web ACL**
+
+### Fixed IP while using WAF with a Load Balancer
+
+- WAF does not support the Network Load Balancer (Layer 4)
+- We can use Global Accelerator for fixed IP and WAP on the ALB
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/1517b163-49a4-4449-b8e9-b8f654c89b0d/Untitled.png)

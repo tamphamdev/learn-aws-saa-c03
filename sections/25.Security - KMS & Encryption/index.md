@@ -296,16 +296,17 @@ KMS, Encryption SDK, SSM Parameter Store
   - 24/7 acces to AWS DDoS response team (DRP)
   - Protect against higher fees during usage spikes due to DDoS
   - Shield Advanced automatic application layer DDoS mitigation automatically creates, evaluates and deploys AWS WAF rules to mitigate layer 7 attacks
+
 ## AWS Firewall Manager
 
 - **Manage rules in all accounts of an AWS Organization**
 - Security policy: common set of security rules
-    - WAF rules (Application Load Balancer, API Gateways, CloudFront)
-    - AWS Shield Advanced (ALB, CLB, NLB, Elastic IP, CloudFront)
-    - Security Groups for EC2, Application Load Balancer and ENI resources in VPC
-    - AWS Network Firewall (VPC Level)
-    - Amazon Route 53 Resolver DNS Firewall
-    - Policies are created at the region level
+  - WAF rules (Application Load Balancer, API Gateways, CloudFront)
+  - AWS Shield Advanced (ALB, CLB, NLB, Elastic IP, CloudFront)
+  - Security Groups for EC2, Application Load Balancer and ENI resources in VPC
+  - AWS Network Firewall (VPC Level)
+  - Amazon Route 53 Resolver DNS Firewall
+  - Policies are created at the region level
 - **Rules are applied to new resources as they are created (good for compliance) across all and future accounts in your Organization**
 
 ### WAF vs Firewall Manager vs Shield
@@ -318,3 +319,61 @@ KMS, Encryption SDK, SSM Parameter Store
 - If you want to use AWS WAF across accounts, accelerate WAF configuration, automate the protection of new resources, use Fire Manager with AWS WAF
 - Shield Advanced adds additional features on top of AWS WAF, such as dedicated support from the Shield Response Team (SRT) and advanced reporting
 - If you’re prone to frequent DDoS attacks, consider purchasing Shield Advanced
+
+## AWS Best Practices for DDoS Resiliency Edge Location Mitigation (BP1, BP3)
+
+- **BP1 - CloudFront**
+  - Web Application delivery at the edge
+  - Protect from DDoS Common Attacks (SYN floods, UDP reflection…)
+- **BP1 - Global Accelerator**
+  - Access your application from the edge
+  - Integration with Shield for DDoS protection
+  - Helpful if your backend is not compatible with CloudFront
+- **BP3 - Route 53**
+
+  - Domain Name Resolution at the edge
+  - DDoS Protection mechanism
+
+  ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/1deceb5f-76a2-4e1a-90de-74a9048560c8/Untitled.png)
+
+### Best Practices for DDoS Resiliency for DDoS mitigation
+
+- **Infrastructure layer defense (BP1, BP3, BP6)**
+  - Protect Amazon EC2 agianst high traffic
+  - That includes using Global Accelerator, Route 53, CloudFront, Elastic Load Balancing
+- **Amazon EC2 with Auto Scaling (BP7)**
+  - Helps scale in case of sudden traffic surges including a flash crowd or a DDoS attack
+- **Elastic Load Balancing (BP6)**
+
+  - Elastic Load Balancing scales with the traffic increases and will distribute the traffic to many EC2 instances
+
+  ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a715e6fa-c3df-4aef-beee-745087a46eb2/Untitled.png)
+
+### Best Practices for DDoS Resiliency Application Layer Defense
+
+- **Detect and filter malicious web requests (BP1, BP2)**
+  - CloudFront cache static content and serve it from edge locations, protecing your backend
+  - AWS WAF is used on top of CloudFront and Application Load Balancer to filter and block requests based on request signatures
+  - WAF rate-based rules can automatically block the IPs of bad actors
+  - Use managed rules on WAF to block attacks based on IP reputation, or block anonymous IPs
+  - CloudFront can block specific geographies
+- **Shield Advanced (BP1, BP2, BP6)**
+
+  - Shield Advanced automatic application layer DDoS mitigation autoamtically creates, evaluates and deploys AWS WAF rules to mitigate layer 7 attacks
+
+  ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/5b98025f-8a26-4915-90fb-d164beb13f5c/Untitled.png)
+
+### Best Practices for DDoS Resiliency Attack surface reduction
+
+- **Obfuscating AWS resources (BP1, BP4, BP6)**
+  - Using CloudFront, API Gateway, Elastic Load Balancing to hide your backend resources (Lambda functions, EC2 instances)
+- **Security groups and Network ACLs (BP5)**
+  - Use security groups and NACLs to filter traffic based on specific UP at the subnet or ENI-level
+  - Elastic IP are protected by AWS Shield Advanced
+- **Protecting API endpoints (BP4)**
+
+  - Hide EC2, Lambda, elsewhere
+  - Edge-optimized mode, or CloudFront + regional mode (more control for DDoS)
+  - WAF + API Gateway: burst limits, headers filtering, use API keys
+
+  ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f36873d4-ca55-46d4-9ced-0712bbc831d9/Untitled.png)

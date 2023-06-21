@@ -395,3 +395,26 @@ KMS, Encryption SDK, SSM Parameter Store
 - **Can protect against CryptoCurrency attacks (has a dedicated “finding” for it)**
 
 ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/6e0c10de-d247-4752-b56b-79d7233395bd/Untitled.png)
+
+## Amazon Inspector
+
+- **Automated Security Assesments**
+- **For EC2 instances**
+  - Leveraging the **AWS System Manager (SSM) agent**
+  - Analyze against **unintended network accessibility**
+  - Analyze the running OS against **known vulnerabilities**
+- **For Container Images push to Amazon ECR**
+  - Assessment of Container Images as they are pushed
+- **For Lambda Functions**
+  - Identifies software vulnerabilities in function code and package dependencies
+  - Assessment of funcions as they are deployed
+- Reporting & integration with AWS Security Hub
+- Send finding to Amazon EventBridge
+
+### What does Amazon Inspector evaluate?
+
+- **Remember: only for EC2 instances, Container Images & Lambda function**
+- Continuous scanning of the infrastructure, only when needed
+- Package vulnerabilities (EC2, ECR & Lambda) - database of CVE
+- Network reachability (EC2)
+- A risk score is assosicated with all vulnerabilities for prioritization

@@ -189,3 +189,72 @@ KMS, Encryption SDK, SSM Parameter Store
 - Use cases: multi-region apps, disaster recovery strategies, multi-region DB…
 
 ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a904b718-87f3-4c86-9dd6-51aff6580890/Untitled.png)
+
+## AWS Certificate Manager (ACM)
+
+- Easily privosion, manage, and deploy **TLS Certificates**
+- Provide in-flight encryption for websites (HTTPS)
+- Supports both public and private TLS certificates
+- Free of charge for public TLS certificates
+- Automatic TLS certificates renewal
+- Integrations with (load TLS certificates on)
+  - Elastic Load Balancers( CLB, ALB, NLB)
+  - CloudFront Distributions
+  - APIs on API Gateway
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/4bc4576d-7813-40b4-ab97-3d84e5a957ee/Untitled.png)
+
+- Cannot use ACM with EC2 (can’t be extracted)
+
+### Requesting Public Certificates
+
+1. List domain names to be included in the certificate
+   1. Fully Qualified Domain Name (FQDN): corp.example.com
+   2. Wildcard Domain: \*.example.com
+2. Select Validation Method: DNS Validation or Email validation
+   1. DNS Validation is preferred for automation purposes
+   2. Email validation will send emails to contact address in the WHOIS database
+   3. DNS Validation will leverage a CNAME record to DNS config (ex: Route 53)
+3. It will take a few hours to get verified
+4. The Public Certificate will be enrolled for automatic renewal
+   - ACM automatically renews ACM-generated certificates 60 days before expiry
+
+### Importing Public Certificates
+
+- Option to generate the certificate outside of ACM and then import it
+- **No automatic renewal**, must import a new certificate before expiry
+- **ACM sends daily expiration events** starting 45 days prior to expiration
+  - The # of days can be configured
+  - Events are apprearing in EventBridge
+- **AWS Config** has a managed rule named _acm-certificate-expiration-check_ to check for expiring certificates (configurable number of days)
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/92239f17-181b-445f-a889-1d6c286c9673/Untitled.png)
+
+### Integration with ALB
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/1aedc32e-96d0-476e-9ea9-08b2c61f8d27/Untitled.png)
+
+### Endpoint Types
+
+- **Edge-Optimized (default)**: For global clients
+  - Requests are routed through the CloudFront Edge locations (improves latency)
+  - The API Gateway still lives in only one region
+- **Regional**:
+  - For clients within the same region
+  - Coudl manually combine with CloudFront (more control over the caching strategies and the distribution)
+- **Private**:
+  - Can only be accessed from your VPC using an interface VPC endpoint (ENI)
+  - Use a resource policy to define access
+
+### Integration with API Gateway
+
+- Create a **Custom Domain Name** in API Gateway
+- **Edge-Optimized (default)**: For global clients
+  - Requests are routed through the CloudFront Edge locations (improves latency)
+  - The API Gateway still lives in only one region
+  - **The TLS Certificate must be in the same region as CloudFront, in us-east-1**
+  - Then setup CANAME or (better) A-Alias record in Route 53
+- Regional:
+  - For clients within the same region
+  - **The TLS Cerificate must be imported on API gateway, in the same region as the API Stage**
+  - Then setup CNAME or (better) A-Alias record in Route 53

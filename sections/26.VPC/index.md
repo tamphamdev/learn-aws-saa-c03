@@ -81,3 +81,18 @@ https://www.ipaddressguide.com/cidr ⇒ Link to check Subnet Mask
 - **Exam Tip**: if you need 29 IP addresses for EC2 instances:
     - You can’t choose a subnet of size /27 (32 IP addresses, 32- 5 = 27 < 29)
     - You need to choose a subnet of size /26 (64 IP addresses, 64 - 5 = 59 > 29)
+
+## Internet Gateway (IGW)
+
+- Allows resources (ex: EC2 instances) in a VPC connect to the Internet
+- It scales horizontally and is highly available and redundant
+- Must be created separately from a VPC
+- One VPC can only be attached to one IGW and vice versa
+- Internet Gateway on their own do not allow Internet access…
+- Route table must also be edited!
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/6d90eb24-2e95-4552-971b-84a5d4ec236c/Untitled.png)
+
+### Editing Route Tables
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/9a31caa6-cdbd-40da-b1de-352396c41df9/Untitled.png)

@@ -50,3 +50,20 @@ https://www.ipaddressguide.com/cidr ⇒ Link to check Subnet Mask
 - New EC2 instances are launched into the default VPC if no subnet is specified
 - Default VPC has Internet connectivity and all EC2 instances inside it have public IPv4 addresses
 - We also get public and a private IPv4 DNS names
+
+### VPC in AWS - IPv4
+
+- VPC = Virtual Private Cloud
+- You can have multiple VPCs in an AWS region( max. 5 per region- soft limit)
+- Max CIDR per VPC is 5, for each CIDR:
+    - Min size is /28 (16 IP addresses)
+    - Max size is /16 (65536 IP addresses)
+- Because VPC is private, only the Private IPv4 ranges are allowed:
+    - 10.0.0.0 = 10.255.255.255 (10.0.0.0/8)
+    - 172.1.6.0.0 - 172.1.255.255 (172.16.0.0/12)
+    - 192.168.0.0 - 192.168.255.255 (192.168.0.0/16)
+- **Your VPC CIDR should NOT overlap with your other networks (ex: corporate)**
+
+### State of Hands-on
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/018334e0-9656-44ac-85e1-dc5f805da108/Untitled.png)

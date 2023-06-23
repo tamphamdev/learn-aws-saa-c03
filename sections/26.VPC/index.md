@@ -43,3 +43,10 @@ https://www.ipaddressguide.com/cidr ⇒ Link to check Subnet Mask
     - 172.16.0.0 = 172.31.255.255 (172.16.0.0/12) ⇒ **AWS default VPC in that range**
     - 192.168.0.0 - 192.168.255.255 (192.168.0.0/16) ⇒ home networks
 - All the rest of the IP addresses on the Internet are Public
+
+## Default VPC
+
+- All new AWS accounts have a default VPC
+- New EC2 instances are launched into the default VPC if no subnet is specified
+- Default VPC has Internet connectivity and all EC2 instances inside it have public IPv4 addresses
+- We also get public and a private IPv4 DNS names

@@ -96,3 +96,12 @@ https://www.ipaddressguide.com/cidr ⇒ Link to check Subnet Mask
 ### Editing Route Tables
 
 ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/9a31caa6-cdbd-40da-b1de-352396c41df9/Untitled.png)
+
+## Bastion Hosts
+
+- We can use a Bastion Host to SSH into our private EC2 instances
+- The Bastion is in the public subnet which is then connected to all other private subnets
+- **Bastion Host security group must allow** inbound from the internet on port 22 form restricted CIDR, for example the **public CIDR** of your corporation
+- **Security Group of the EC2 Instances** must allow the Security Group of the Bastion Host, or the **private IP** of the Bastion host
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/94b86938-f116-46c3-afcd-01567587eb10/Untitled.png)

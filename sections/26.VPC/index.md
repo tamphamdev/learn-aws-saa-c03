@@ -105,3 +105,32 @@ https://www.ipaddressguide.com/cidr ⇒ Link to check Subnet Mask
 - **Security Group of the EC2 Instances** must allow the Security Group of the Bastion Host, or the **private IP** of the Bastion host
 
 ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/94b86938-f116-46c3-afcd-01567587eb10/Untitled.png)
+
+## NAT Instance (outdated, but still at the exam)
+
+- **NAT = Network Address Translation**
+- Allows EC2 instances in private subnets to connect to the Internet
+- Must be launched in a public subnet
+- Must disable EC2 setting: Source / destination Check
+- Must have Elastic IP attached to it
+- Route Tables must be configured to route traffic from private subnets to the NAT Instance
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/457806f0-b238-4e7f-899d-0f27216eb292/Untitled.png)
+
+### NAT Diagram
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/62f4cabc-fec5-4464-abe6-68e069b910b2/Untitled.png)
+
+### NAT Instance - Comments
+
+- Pre-configured Amazon Linux AMI is available
+    - Reached the end of standard support on December 31, 2020
+- Not highly available / resilient setup out of the box
+    - You need to create an ASG in multi-AZ + resilient user-data script
+- Internet traffic bandwidth depends on EC2 instance type
+- You must manage Security Groups & rules:
+    - Inbound:
+        - Allow HTTP / HTTPS traffic coming from Private Subnets
+        - Allow SSH from your home network (access is provided through Internet Gateway)
+    - Outbound:
+        - Allow HTTP / HTTPS traffic to the internet

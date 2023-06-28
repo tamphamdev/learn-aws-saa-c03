@@ -134,3 +134,27 @@ https://www.ipaddressguide.com/cidr ⇒ Link to check Subnet Mask
         - Allow SSH from your home network (access is provided through Internet Gateway)
     - Outbound:
         - Allow HTTP / HTTPS traffic to the internet
+
+## NAT Gateway
+
+- AWS-managed NAT, higher bandwidth, high availability, no administration
+- Pay per hour for usage and bandwidth
+- NATGW is created in a specific Availability Zone, uses an Elastic IP
+- Can’t be used by EC2 instance in the same subnet (only from other subnets)
+- Requires an IGW (Private Subnet ⇒ NATGW ⇒ IGW)
+- 5Gbps of bandwidth with automatic scaling up to 45Gbps
+- No Security Groups to manage / require
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/1a090cd7-12c3-4cf0-a50f-fbca4acc63b3/Untitled.png)
+
+### NAT Gateway with High Availability
+
+- NAT Gateway is resilient (đàn hồi) within a single Availability Zone
+- Must create multiple NAT Gateways in multiple AZs for fault-tolerance
+- There is no cross-AZ failover needed because if an AZ goes down it doesn’t need NAT
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/5869d84f-c508-412c-9edc-9d05ef8be468/Untitled.png)
+
+### NAT Gateway vs. NAT Instance
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/6ba5a238-8115-4c3a-9209-e820813895fe/Untitled.png)

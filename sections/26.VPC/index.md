@@ -158,3 +158,49 @@ https://www.ipaddressguide.com/cidr ⇒ Link to check Subnet Mask
 ### NAT Gateway vs. NAT Instance
 
 ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/6ba5a238-8115-4c3a-9209-e820813895fe/Untitled.png)
+
+### Network Access Control List (NACL)
+
+- NACL are like a firewall which control traffic from and to **subnets**
+- **One NACL per subnet**, new subnets are assigned the **Default NACL**
+- You define **NACL Rules:**
+    - Rules have a number (1-32766), higher precedence with a lower number
+    - First rule match will drive the decision
+    - Example: if you define #100 ALLOW 10.0.0.10/32 and #200 DENY 10.0.0.10/32, the IP address will be allowed because 100 has a higher precedence over 200
+    - That last rule is an asterisk (*) and denies a request in case of no rule match
+    - AWS recommends adding rules by increment of 100
+- Newly created NACLs will deny everything
+- NACL are a great way of blocking a specific IP address at the subnet level
+
+### NACLs
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/088d7d3f-0717-4676-b364-acf4cdef5f87/Untitled.png)
+
+### Default NACL
+
+- Accepts everything inbound/outbound with the subnets it’s associated with
+- Do **NOT** modify the Default NACL, instead create custom NACLs
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/01a55630-10ad-4feb-84f2-7272bc7de882/Untitled.png)
+
+### Ephemeral Ports
+
+- For any two endpoints to establish a connection, they must use ports
+- Clients connect to a **defined port**, and expect a response on an **ephemeral port**
+- Different Operating Systems use different port ranges, examples:
+    - IANA & MS Windows 10 ⇒ 49152 - 65535
+    - Many Linux Kernels ⇒ 32768 - 60999
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/cd5f4657-1725-4c9e-b378-324dc75436a1/Untitled.png)
+
+### NACL with Ephemeral Ports
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/b771bb9e-39a0-4bd2-9944-cac3da9c68d6/Untitled.png)
+
+### Create NACL rules for each target subnets CIDR
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/fa605ee6-ef65-4182-b3c0-4fb853c53683/Untitled.png)
+
+### Security Group vs NACLs
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/87f5b8f0-ba10-445f-ab2b-3d52e920bd1a/Untitled.png)

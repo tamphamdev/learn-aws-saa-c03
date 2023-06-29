@@ -225,3 +225,41 @@ https://www.ipaddressguide.com/cidr ⇒ Link to check Subnet Mask
 ### Diagram
 
 ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/24e46872-1463-4c29-902e-9b15634e96f9/Untitled.png)
+
+## VPC Endpoints
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3baecfa7-b446-4646-b96d-55ff68fe3854/Untitled.png)
+
+### AWS PrivateLink
+
+- Every AWS service is publicly exposed (public URL)
+- VPC Endpoints (powered by AWS Private Link) allows you to connect to AWS services using a private network instead of using the public Internet
+- They’re redundant and scale horizontally
+- They remove the need of IGW, NATGW,…. to access AWS Services
+- In case of issues:
+    - Check DNS Setting Resolution in your VPC
+    - Check Route Tables
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8b8cb36a-41f3-4de5-8d07-80cab40ab05e/Untitled.png)
+
+### Types of Endpoints
+
+- **Interface Endpoints (powered by PrivateLink)**
+    - Provisions an ENI (private IP address) as an entry point (must attach a Security Group)
+    - Supports most AWS services
+    - $ per hour + $ per GB of data processed
+- **Gateway Endpoints**
+    - Provisions a gateway and must be used **as a target in a route table (does not use security groups)**
+    - Supports both S3 and DynamoDB
+    - Free
+
+    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/65736469-c8dd-47e3-8584-770692175dcf/Untitled.png)
+
+
+### Gateway or Interface Endpoint for S3?
+
+- **Gateway is most likely going to be preferred all the time at the exam**
+- Cost: free for Gateway, $ for interface endpoint
+- Interface Endpoint is preferred access is required from on-premises (Site to Site VPC or Direct Connect), a different VPC or a different region
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/2ab6921e-8da4-4128-997c-9fcc8ab0ddaa/Untitled.png)

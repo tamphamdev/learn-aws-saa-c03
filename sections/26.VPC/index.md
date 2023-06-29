@@ -204,3 +204,24 @@ https://www.ipaddressguide.com/cidr ⇒ Link to check Subnet Mask
 ### Security Group vs NACLs
 
 ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/87f5b8f0-ba10-445f-ab2b-3d52e920bd1a/Untitled.png)
+
+## VPC Peering
+
+- Privately connect two VPCs using AWS network
+- Make them behave as if they were in the same network
+- Must not have overlapping CIDRs
+- VPC Peering connection is NOT transitive (must be established for each VPC that need to communicate with one another)
+- **You must update route tables in each VPC’s subnets to ensure EC2 instances can communicate with each other**
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/6f76ee7d-544c-493d-99e1-f747769f10c9/Untitled.png)
+
+### Good to know
+
+- You can create VPC Peering connection between VPCs in **different AWS accounts/regions**
+- You can reference a security group in a peered VPC (works cross accounts - same region)
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3e309c1b-3d4e-4eeb-97aa-2456a7076e52/Untitled.png)
+
+### Diagram
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/24e46872-1463-4c29-902e-9b15634e96f9/Untitled.png)

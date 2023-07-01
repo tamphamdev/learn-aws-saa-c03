@@ -324,3 +324,48 @@ https://www.ipaddressguide.com/cidr ⇒ Link to check Subnet Mask
 - To set it up, connect multiple VPC connections on the same VGW, setup dynamic routing and configure route tables
 
 ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/6877d8e1-cf0c-40e1-a1fa-3245aa598e59/Untitled.png)
+
+## Direct Connect (DX)
+
+- Provides a dedicated **private** connection from a remote network to your VPC
+- Dedicated connection must be setup between your DC and AWS Direct Connect locations
+- You need to setup a Virtual Private Gateway on your VPC
+- Access public resources (S3) and private (EC2) on same connection
+- Use Cases:
+    - Increase bandwidth throughput - working with large data sets - lower cost
+    - More consistent network experience - applications using real-time data feeds
+    - Hybrid Environments (on prem + cloud)
+- Supports both IPv4 and IPv6
+
+### Direct Connect Diagram
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/110fa233-c4d0-4f51-a395-4fe5fe3e1a55/Untitled.png)
+
+### Direct Connect Gateway
+
+- **If you want to setup a Direct Connect to one or more VPC in many different regions (same account), you must use a Direct Connect Gateway**
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/b1d30778-6f9c-420d-bf6d-f0ec1feb9697/Untitled.png)
+
+### Direct Connect - Connection Types
+
+- Dedicated Connections: 1Gbps, 10Gbps and 100 Gbps capacity
+    - Physical ethernet port dedicated to a customer
+    - Request made to AWS first, then completed by AWS Direct Connect Partners
+- Hosted Connections: 50Mbps, 500Mbps, to 10Gbps
+    - Connection requests are made via AWS Direct Connect Partners
+    - Capacity can be **added or removed on demand**
+    - 1, ,2, 5, 10 Gbps available at select AWS Direct Connect Partners
+- Lead times a re often **longer than 1 month** to establish a new connection
+
+### Direct Connect - Encryption
+
+- Data in transit is not encrypted but is private
+- AWS Direct Connect + VPC provides an IPsec-encrypted private connection
+- Good for an extra level of security, but slightly more complex to put in place
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/bbdecd9a-14be-403b-8422-4750d8f8826e/Untitled.png)
+
+### Direct Connect - Resiliency
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/d133a3cf-01b1-407c-85cf-1169d38b41fe/Untitled.png)

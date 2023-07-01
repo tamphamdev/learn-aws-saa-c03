@@ -293,3 +293,34 @@ https://www.ipaddressguide.com/cidr ⇒ Link to check Subnet Mask
 ### Architectures
 
 ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/867a26c5-fe00-48ff-b971-624b4ad8bc8d/Untitled.png)
+
+## AWS Site-to-Site VPC
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/1634ccdf-c362-48ee-8988-21c5256f298f/Untitled.png)
+
+- **Virtual Private Gateway (VGW)**
+    - VPN concentrator on the AWS side of the VPC connection
+    - VGW is created an attached to the VPC from which you want to create the Site-to-Site- VPN connection
+    - Possibility to customize the ASN (Autonomous System Number)
+- **Customer Gateway (CGW)**
+    - Software application or physical device on customer side of the VPC connection
+
+### Site-to-Site VPN Connections
+
+- Customer Gateway Device (On-premises)
+    - What IP address to use?
+        - Public Internet-routable IP address for your Customer Gateway device
+        - If it’s behind a NAT device that’s enabled for ANT traversal (NAT-T), use the public IP address of the NAT device
+- Important step: enable Route Propagation for the Virtual Private Gateway in the route table that is associated with your subnets
+- If you need to ping your EC2 instances from on-premises make sure you add the ICMP protocol on the inbound of your security groups
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f38516c5-7558-4b34-9973-88f84b8b8564/Untitled.png)
+
+### AWS VPN CloudHub
+
+- Provide secure communication between multiple sites, if you have multiple VPC connections
+- Low-cost hub-and-spoke model for primary or secondary network connectivity between different locations (VPC only)
+- It’s a VPC connection so it goes over the public Internet
+- To set it up, connect multiple VPC connections on the same VGW, setup dynamic routing and configure route tables
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/6877d8e1-cf0c-40e1-a1fa-3245aa598e59/Untitled.png)

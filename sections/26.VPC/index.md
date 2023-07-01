@@ -263,3 +263,33 @@ https://www.ipaddressguide.com/cidr ⇒ Link to check Subnet Mask
 - Interface Endpoint is preferred access is required from on-premises (Site to Site VPC or Direct Connect), a different VPC or a different region
 
 ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/2ab6921e-8da4-4128-997c-9fcc8ab0ddaa/Untitled.png)
+
+## VPC Flow Logs
+
+- Capture information about IP traffic going into your interfaces:
+    - VPC Flow Logs
+    - Subnet Flow Logs
+    - Elastic Network Interface (ENI) Flow Logs
+- Helps to monitor & troubleshoot connectivity issues
+- Flow logs data can go to S3, CloudWatch Logs, and Kinesis Data Firehose
+- Captures network information from AWS managed interfaces too: ELB, RDS, ElasticCache, RedShift, WorkSpaces, NATGW, Transit Gateway…
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/00f72512-be17-46f2-9865-453e89bc4442/Untitled.png)
+
+### VPC Flow Logs Syntax
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/04dfc14a-74b8-49c6-b463-23a031808141/Untitled.png)
+
+- **srcaddr & dstaddr -** help identify problematic IP
+- **srcport & dstport -** help identify problematic ports
+- **Action** - success or failure of the request due to Security Group / NACL
+- Can be used for analytics on usage patterns, or malicious behavior
+- **Query VPC flow logs using Athena on S3 or CloudWatch Logs Insights**
+
+### Troubleshoot SG & NACL issues
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/d771ad3e-c641-406f-85a8-6811d215b317/Untitled.png)
+
+### Architectures
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/867a26c5-fe00-48ff-b971-624b4ad8bc8d/Untitled.png)

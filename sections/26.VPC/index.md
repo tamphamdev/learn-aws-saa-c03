@@ -476,3 +476,37 @@ https://www.ipaddressguide.com/cidr ⇒ Link to check Subnet Mask
 - **Transit Gateway** - transitive peering connections for VPC, VPN & DX
 - **Traffic Mirroring** - copy network traffic from ENIs for further analysis
 - **Egress-only Internet Gateway** - like a NAT Gateway, but for IPv6
+
+## Network Protection on AWS
+
+- To protect network on AWS, we’ve seen
+    - Network Access Control List. (NACLs)
+    - Amazon VPC security groups
+    - AWS WAF (protect against malicious requests)
+    - AWS Shield & AWS Shield Advanced
+    - AWS Firewall Manager (to mange. them across accounts)
+- But what if we want to protect in a sophisticated way our entire VPC?
+
+### AWS Network Firewall
+
+- Protect your entire Amazon VPC
+- From Layer 3 to Layer 7 protection
+- Any direction, you can inspect
+    - VPC to VPC traffic
+    - Outbound to internet
+    - Inbound from internet
+    - To/from Direct Connect & Site-to-site VPN
+- Internally, the AWS Network Firewall uses the AWS Gateway Load Balancer
+- Rules can be centrally managed cross-account by AWS Firewall Manager to apply to many VPCs
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/1121d720-aa46-41d7-9417-b2ab414b47be/Untitled.png)
+
+### Network Firewall - Fine Grained Controls
+
+- Supports 1000s of rules
+    - IP & port - example: 10,000s of IPs filtering
+    - Protocol - example: block the SMB protocol for outbound communications
+    - Stateful domain list rule groups: only allow outbound traffic to *.mycorp.com or third-party software repo
+    - General pattern matching using regex
+- **Traffic filtering: Allow, drop, or alert for the traffic that matches the rules**
+- **Active flow inspection** to protect against network threats with intrusion-prevention capabilities (like Gateway Load Balancer, but all managed by AWS)

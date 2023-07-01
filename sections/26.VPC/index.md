@@ -412,3 +412,37 @@ https://www.ipaddressguide.com/cidr ⇒ Link to check Subnet Mask
 - Use cases: content inspection, threat monitoring, troubleshooting…
 
 ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/378d847f-b204-497e-8eb9-b47eb126d14e/Untitled.png)
+
+## What is IPv6?
+
+- IPv4 designed to provide 4.3 Billion addresses (they’ll be exhausted soon)
+- IPv6 is the successor of IPv4
+- IPv6 is designed to provide 3.4 x 10^38 unique IP addresses
+- Every IPv6 address is public and Internet-routable (no private range)
+- Format ⇒ x.x.x.x.x.x.x.x (x is hexadecimal, range can be from 0000 to ffff)
+- Examples:
+    - 2001:db8:3333:4444:5555:6666:7777:8888
+    - 2001:db8:3333:4444:cccc:dddd:eeee:ffff
+    - :: ⇒ 8 segments are zero
+    - 2001:db8:: ⇒last 6 segments are zero
+    - ::1234:5678 ⇒ first 6 segments are zero
+    - 2001:db8::1234:5678 ⇒ middle 4 segments are zero
+
+### IPv6 in VPC
+
+- **IPv4 cannot be disabled for your VPC and subnets**
+- You can enable IPv6 (they’re public IP addresses) to operate in dual-stack mode
+- Your EC2 instances will get at least a private internal IPv4 and a public IPv6
+- They can communicate using either IPv4 or IPv6 to the internet through an Internet Gateway
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/be23d0fa-91b1-4c97-ba46-94fd4b884c18/Untitled.png)
+
+### IPv6 Troubleshooting
+
+- **IPv4 cannot be disabled for your VPC and subnets**
+- So, if you cannot launch an EC2 instance in your subnet
+    - It’s not because it cannot acquire an IPv6 (the space is very large)
+    - It’s because there are no available IPv4 in your subnet
+- **Solution**: create a new IPv4 CIDR in your subnet
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/913d269d-d7e7-4d2a-b2b8-30b449a8af99/Untitled.png)

@@ -369,3 +369,33 @@ https://www.ipaddressguide.com/cidr ⇒ Link to check Subnet Mask
 ### Direct Connect - Resiliency
 
 ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/d133a3cf-01b1-407c-85cf-1169d38b41fe/Untitled.png)
+
+### Network topologies can become complicated
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ca069044-d6e9-4d78-8259-61f7ef92e12f/Untitled.png)
+
+## Transit Gateway
+
+- For having transitive peering between thousands of VPC and on-premises, hub-and-spoke (star) connection
+- Regional resource, can work cross-region
+- Share cross-account using Resource Access Manager (RAM)
+- You can peer Transit Gateways across regions
+- Route Tables: limit which VPC can talk with other VPC
+- Works with Direct Connect Gateway, VPN connections
+- Supports **IP Multicast** (not supported by any other AWS service)
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/d4ec2ce2-18d0-4bb7-b686-40626e6d7f5d/Untitled.png)
+
+### Transit Gateway: Site-to-Site VPN ECMP
+
+- **ECMP = Equal-cost multi-path routing**
+- Routing strategy to allow to forward a packet over multiple best path
+- Use case: create multiple Site-to-Site VPN connection **to increase the bandwidth of your connection to AWS**
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/05c473c9-3dde-4f26-aea7-2c9a608a4b28/Untitled.png)
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/0004d80e-adab-44a3-9dfc-bbaba0272f78/Untitled.png)
+
+### Transit Gateway - Share Direct Connect between multiple accounts
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3a9ca708-f518-4d74-a886-18ece07d966e/Untitled.png)

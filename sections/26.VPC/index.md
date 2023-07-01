@@ -399,3 +399,16 @@ https://www.ipaddressguide.com/cidr ⇒ Link to check Subnet Mask
 ### Transit Gateway - Share Direct Connect between multiple accounts
 
 ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3a9ca708-f518-4d74-a886-18ece07d966e/Untitled.png)
+
+## VPC - Traffic Mirroring
+
+- Allows you to capture and inspect network traffic in your VPC
+- Route the traffic to security appliances that you manage
+- Capture the traffic
+    - **From (Source)** - ENIs
+    - **To (Targets)** - an ENI or a Network Load Balancer
+- Capture all packets or capture the packets of your interest (optionally, truncate packets)
+- Source and Target can be in the same VPC or different VPCs (VPC Peering)
+- Use cases: content inspection, threat monitoring, troubleshooting…
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/378d847f-b204-497e-8eb9-b47eb126d14e/Untitled.png)

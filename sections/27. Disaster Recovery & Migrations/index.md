@@ -135,3 +135,17 @@
   - Provides Data Redundancy
   - Eliminates I/O freezes
   - Minimizes latency spikes
+
+## RDS & Aurora MySQL Migrations
+
+- RDS MySQL to Aurora MySQL
+    - Option 1: DB Snapshots from RDS MySQL restored  as MySQL Aurora DB
+    - Option 2: Create an Aurora Read Replica from your RDS MySQL, and when the replication lag is 0, promote it as its own DB cluster (can take time and cost $)
+- External MySQL to Aurora MySQL
+    - Option 1:
+        - Use Percona XtraBackup to create a file backup in Amazon S#
+        - Create an Aurora MySQL DB from Amazon S3
+    - Option 2:
+        - Create an Aurora MySQL DB
+        - Use the mysqldump utility to migrate MySQL into Aurora (slower than S3 methd)
+- Use DMS if both databsae are up and running

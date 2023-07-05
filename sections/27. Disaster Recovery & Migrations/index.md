@@ -139,13 +139,42 @@
 ## RDS & Aurora MySQL Migrations
 
 - RDS MySQL to Aurora MySQL
-    - Option 1: DB Snapshots from RDS MySQL restored  as MySQL Aurora DB
-    - Option 2: Create an Aurora Read Replica from your RDS MySQL, and when the replication lag is 0, promote it as its own DB cluster (can take time and cost $)
+  - Option 1: DB Snapshots from RDS MySQL restored as MySQL Aurora DB
+  - Option 2: Create an Aurora Read Replica from your RDS MySQL, and when the replication lag is 0, promote it as its own DB cluster (can take time and cost $)
 - External MySQL to Aurora MySQL
-    - Option 1:
-        - Use Percona XtraBackup to create a file backup in Amazon S#
-        - Create an Aurora MySQL DB from Amazon S3
-    - Option 2:
-        - Create an Aurora MySQL DB
-        - Use the mysqldump utility to migrate MySQL into Aurora (slower than S3 methd)
+  - Option 1:
+    - Use Percona XtraBackup to create a file backup in Amazon S#
+    - Create an Aurora MySQL DB from Amazon S3
+  - Option 2:
+    - Create an Aurora MySQL DB
+    - Use the mysqldump utility to migrate MySQL into Aurora (slower than S3 methd)
 - Use DMS if both databsae are up and running
+
+### RDS & Aurora PostgreSQL Migrations
+
+- RDS PostgreSQL to Aurora PostgreSQL
+  - Option 1: DB Snapshots from RDS PostgreSQL restored as PostgreSQL Aurora DB
+  - Option 2: Create an Aurora Read Replica from your RDS PostgreSQL, and when the replication lag is 0, promote it as its own DB cluster (can take time and cost $)
+- External PostgreSQL to Aurora PostgreSQL
+  - Create a backup and put it in Amazon S3
+  - Import it using the aws_s3 Aurora extension
+- Use DMS if both database are up and running
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/73c2e7b0-8511-4c72-ac61-227d20895b32/Untitled.png)
+
+### On-Premise strategy with AWS
+
+- Ability to download Amazon Linux 2 AMI as a VM (.iso format)
+  - VMWare, KVM, VirtualBox (Oracle VM), Microsoft Hyper-V
+- VM Import / Export
+  - Migrate existing applications into EC2
+  - Create a DR repository strategy for your on-premises VMs
+  - Can export back the VMs from EC2 to on-premises
+- AWS Application Discovery Service
+  - Gather information about your on-premises servers to plan a migration
+  - Server utilization and dependency mapping
+  - Track with AWS Mirgration Hub
+- AWS Database Migration Service (DMS)
+  - replicate On-premise ⇒ AWS, AWS ⇒ AWS, AWS ⇒ On-premise
+- AWS Server Migration Service (SMS)
+  - Incremental replication of on-premises live servers to AWS

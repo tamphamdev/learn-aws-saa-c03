@@ -568,3 +568,15 @@ https://www.ipaddressguide.com/cidr ⇒ Link to check Subnet Mask
     - Takes about 1 week for the end-to-end transfer
     - Can be combined with DMS
 - **For on-going replication / transfers: Site-to-Site VPN or DX with DMS or DataSync**
+
+## VMWare Cloud on AWS
+
+- Some customers use VMWare Cloud to mange their on-premises Data Center
+- They want to extend the Data Center capacity to AWS, but keep using the VMware Cloud software
+- …Enter VMware Cloud on AWS
+- Use cases:
+    - Migrate your VMware vSphere-based workloads to AWS
+    - Run your production workloads across VMware vSphere-based private, public, an hybrid cloud environments
+    - Have a disaster recover strategy
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/186653a7-7a45-4791-9d03-b901cab52121/Untitled.png)

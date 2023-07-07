@@ -533,3 +533,23 @@ https://www.ipaddressguide.com/cidr ⇒ Link to check Subnet Mask
 - Even the root user cannot delete backups when enabled
 
 ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/64f01615-4abd-4b01-8b43-66c50b302446/Untitled.png)
+
+## AWS Application Discovery Service
+
+- Plan migration projects by gathering information about on-premises data centers
+- Sever utilization data and dependency mapping are important for migrations
+- **Agentless Discovery (AWS Agentless Discovery Connector)**
+    - VM inventory, configuration, and performance history such as CPU, memory, and disk usage
+- **Agent-based Discovery (AWS Application Discovery Agent)**
+    - System configuration, system performance, running processes, and details of the network connections between systems
+- Resulting data can be viewed within AWS Migration Hub
+
+### AWS Application Migration Service (MGN)
+
+- *The “AWS evolution” of CloudEndure Migration, replacing AWS Service Migration Service (SMS)*
+- Lift-and-shift (rehost) solution which simplify migrating applications to AWS
+- Converts your physical, virtual, and cloud-based servers to run natively on AWS
+- Supports wide range of platforms, Operation Systems and databases
+- Minimal downtime, reduced costs
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f63b7bcb-a071-424e-a4e4-52b839edc602/Untitled.png)

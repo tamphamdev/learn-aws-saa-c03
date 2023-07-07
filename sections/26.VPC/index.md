@@ -510,3 +510,26 @@ https://www.ipaddressguide.com/cidr ⇒ Link to check Subnet Mask
     - General pattern matching using regex
 - **Traffic filtering: Allow, drop, or alert for the traffic that matches the rules**
 - **Active flow inspection** to protect against network threats with intrusion-prevention capabilities (like Gateway Load Balancer, but all managed by AWS)
+
+## AWS Backup
+
+- Supports PITR for supported services
+- On-Demand and Scheduled backups
+- Tag-based backup policies
+- You create backup policies known as **Backup Plans**
+    - Backup frequency (every 12 hours, daily, weekly, monthly, cron expression)
+    - Backup window
+    - Transition Cold Storage (Never, Days, Weeks, Months, Years)
+    - Retention Period (Always, Days, Weeks, Months, Years)
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/96bb8d95-e9be-402e-b7ff-30afa82a7c57/Untitled.png)
+
+### AWS Backup Vault Lock
+
+- Enforce WORM (Write Once Read Many) state for all the backups that you store in your AWS Backup Vault
+- Additional layer of defense to protect your backups against:
+    - Inadvertent or malicious delete operations
+    - Updates that shorten or alter retention periods
+- Even the root user cannot delete backups when enabled
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/64f01615-4abd-4b01-8b43-66c50b302446/Untitled.png)

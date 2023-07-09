@@ -123,3 +123,14 @@
     - By AWS Config for rules remediations
 
     ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ed8697d4-65dc-43e6-a7e1-0236fa8ab345/Untitled.png)
+
+## Amazon Elastic Transcoder
+
+- Elastic Transcoder is used to **convert media files stored in S3 into media files in the formats required by consumer playback devices (phones etc…)**
+- Benefits:
+    - Easy to use
+    - Highly scalable - can handle large volumes of media files and large file sizes
+    - Cost effective - duration-based pricing model
+    - Fully managed & secure, pay for what you use
+
+    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a56be449-542c-4d40-85f7-d3e66f9af245/Untitled.png)

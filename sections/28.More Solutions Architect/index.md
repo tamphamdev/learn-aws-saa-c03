@@ -133,3 +133,18 @@
     - Configure with text files
     - Automate creation of VPC, Subnet, cluster type and instance types
     - **Ability to enable EFA on the cluster (improves network performance)**
+
+### Creating a highly available EC2 instance
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/0a5e1dc1-253d-47b0-96b9-1ebb373ee304/Untitled.png)
+
+- CloudWatch sẽ thông báo và trigger Lambda function
+- Lambda sẽ thực thi attach ElasticIP vào EC2 instance mới đc launch
+
+### Creating a highly available EC2 instance with an Auto Scaling Group
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/9a97f1c2-8daa-4699-bfba-751da6e4cb1f/Untitled.png)
+
+### Creating a highly available EC2 instance with ASG + EBS
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/870cabed-0e06-431b-9909-5cba0f40ac19/Untitled.png)

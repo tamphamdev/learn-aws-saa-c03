@@ -50,3 +50,17 @@
 - Use cases: transactional, marketing and bulk email communications
 
 ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/70751f6a-2ee9-47b3-bd10-0f23b38e5492/Untitled.png)
+
+## Amazon Pinpoint
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/623606e9-e2a6-4c51-b5e4-83fc7cda3c56/Untitled.png)
+
+- Scalable 2-way (outbound/inbound) marketing communications service
+- Supports email, SMS, push, voice, and in-app messaging
+- Ability to segment and personalize messages with the right content to customers
+- Possibility to receive replies
+- Scales to billions of messages per day
+- Use cases: run campaigns by sending marketing, bulk, transactional SMS messages
+- Versus Amazon SNS or Amazon SES
+    - In SNS & SES you managed each message’s audience, content, and delivery schedule
+    - In Amazon Pinpoint, you create message templates, delivery schedules, highly-targeted segments, and full campaigns

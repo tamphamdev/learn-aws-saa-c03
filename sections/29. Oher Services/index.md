@@ -134,3 +134,42 @@
     - Fully managed & secure, pay for what you use
 
     ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a56be449-542c-4d40-85f7-d3e66f9af245/Untitled.png)
+
+    ## AWS Batch
+
+- Fully managed batch processing at **any scale**
+- Efficiently run 100,000s of computing batch jobs on AWS
+- A “batch” job is a job with a start and an end (opposed to continuous)
+- Batch will dynamically launch **EC2 instances** or **Spot Instances**
+- AWS Batch provisions the right amount of compute / memory
+- You submit or schedule batch jobs and AWS Batch does the rest!
+- Batch jobs are defined as **Docker Images** and **run on ECS**
+- Helpful for cost optimizations and focusing less on the infrastructure
+
+### Simplified Example
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/968b255f-d348-4905-b605-7ed2918871d6/Untitled.png)
+
+### Batch vs Lambda
+
+- Lambda:
+    - Time limit
+    - Limited runtimes
+    - Limited temporary disk space
+    - Serverless
+- Batch:
+    - No time limit
+    - Any runtime as long as it’s packaged as a Docker image
+    - Rely on EBS / instance store for disk space
+    - Replies on EC2 (can be managed by AWS)
+
+
+## Amazon AppFlow
+
+- Fully managed integration service that enables you to securely transfer data between **Software-as-a-Service (SasS) applications and AWS**
+- Sources: **Salesforce**, SAP, Zendesk, Slack, and ServiceNow
+- Destinations: AWS services like **Amazon S3, Amazon Redshift** or non-AWS such as SnowFlak and Salesforce
+- Frequency: on a schedule, in response to events, or on demand
+- Data transformation capabilities like filtering and validation
+- Encrypted over the public internet or privately over AWS PrivateLink
+- Don’t spend time writing the integrations and leverage APIs immediately
